@@ -8,6 +8,7 @@ import Transactions from './pages/Transactions';
 import TravelGoals from './pages/TravelGoals';
 import RewardsHub from './pages/RewardsHub';
 import Analytics from './pages/Analytics';
+import BestCard from './pages/BestCard';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="/cards" element={<MyCards session={session} />} />
               <Route path="/transactions" element={<Transactions session={session} />} />
               <Route path="/travel" element={<TravelGoals />} />
+              <Route path="/best-card" element={<BestCard session={session} />} />
               <Route path="/rewards" element={<RewardsHub />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="*" element={<Navigate to="/" replace />} />

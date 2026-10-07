@@ -1,0 +1,38 @@
+program_id,name,type,alliance_general_knowledge,currency_name,india_status_notes
+AIR_INDIA_MAHARAJA,Air India Maharaja Club,AIRLINE,Star Alliance,Maharaja Points,Replaces Club Vistara after the Air India-Vistara merger. Award chart repriced 1 Apr 2026. Moved to Axis Group A (tighter cap) Sept 2026.
+KRISFLYER,Singapore Airlines KrisFlyer,AIRLINE,Star Alliance,KrisFlyer miles,Zone chart: Saver / Advantage / Access tiers on SIA metal; separate chart for partners.
+VIETNAM_LOTUSMILES,Vietnam Airlines Lotusmiles,AIRLINE,SkyTeam,Lotusmiles,LotusDay: 50% off award tickets until 31 Oct 2026 incl. India routes. Axis reduced-ratio tier.
+FLYING_BLUE,Air France-KLM Flying Blue,AIRLINE,SkyTeam,Flying Blue miles,Moved to Axis Group A Sept 2026.
+BA_EXECUTIVE_CLUB,British Airways Executive Club,AIRLINE,oneworld,Avios,Axis reduced-ratio tier.
+QATAR_PRIVILEGE_CLUB,Qatar Airways Privilege Club,AIRLINE,oneworld,Avios,Removed from Axis 2 Apr 2026; returned July 2026 at reduced ratios.
+FINNAIR_PLUS,Finnair Plus,AIRLINE,oneworld,Avios,Axis reduced-ratio tier.
+ASIA_MILES,Cathay Asia Miles,AIRLINE,oneworld,Asia Miles,Added to Axis Sept 2026 at reduced ratios.
+AEROPLAN,Air Canada Aeroplan,AIRLINE,Star Alliance,Aeroplan points,
+UNITED_MILEAGEPLUS,United MileagePlus,AIRLINE,Star Alliance,Miles,
+TURKISH_MILES_SMILES,Turkish Airlines Miles&Smiles,AIRLINE,Star Alliance,Miles,
+THAI_ROYAL_ORCHID,Thai Airways Royal Orchid Plus,AIRLINE,Star Alliance,Miles,
+MILES_AND_MORE,Lufthansa Miles & More,AIRLINE,Star Alliance,Award miles,"Axis Group B; 2,00,000 miles/yr partner cap and 3,000-mile minimum transfer."
+ETHIOPIAN_SHEBAMILES,Ethiopian Airlines ShebaMiles,AIRLINE,Star Alliance,ShebaMiles,
+EVA_INFINITY,EVA Air Infinity MileageLands,AIRLINE,Star Alliance,Miles,
+LIFEMILES,Avianca LifeMiles,AIRLINE,Star Alliance,LifeMiles,
+VIRGIN_ATLANTIC,Virgin Atlantic Flying Club,AIRLINE,SkyTeam,Virgin Points,Amex India 5:4 (800 MR -> 640 pts) read 18 Aug 2026; may be an unlabelled bonus.
+ETIHAD_GUEST,Etihad Guest,AIRLINE,none,Etihad Guest Miles,Dropped by Amex India 1 Jul 2026.
+EMIRATES_SKYWARDS,Emirates Skywards,AIRLINE,none,Skywards Miles,Amex India transfer suspended since 28 May 2025.
+QANTAS_FREQUENT_FLYER,Qantas Frequent Flyer,AIRLINE,oneworld,Qantas Points,Moved to Axis Group A Sept 2026.
+JAL_MILEAGE_BANK,Japan Airlines JAL Mileage Bank,AIRLINE,oneworld,Miles,
+SAUDIA_ALFURSAN,Saudia AlFursan,AIRLINE,SkyTeam,Miles,
+HAINAN_FORTUNE_WINGS,Hainan Airlines Fortune Wings Club,AIRLINE,none,Miles,
+INDIGO_BLUCHIP,IndiGo BluChip,AIRLINE,none,BluChip,"Axis: standard ratio under limited intro offer, reduced ratio after."
+SPICEJET_SPICECLUB,SpiceJet SpiceClub,AIRLINE,none,SpiceCash,
+AIRASIA_REWARDS,airasia rewards,AIRLINE,none,BIG Points,
+ACCOR_ALL,Accor ALL,HOTEL,,ALL Points,Back on Axis Sept 2026 (Group A) at reduced ratios.
+MARRIOTT_BONVOY,Marriott Bonvoy,HOTEL,,Bonvoy Points,Removed from Axis 2 Apr 2026 and not restored as of Sept 2026.
+HILTON_HONORS,Hilton Honors,HOTEL,,Hilton points,"Amex India 2:3 (1,000 -> 1,500) read 18 Aug 2026."
+IHG_ONE_REWARDS,IHG One Rewards,HOTEL,,IHG points,
+WYNDHAM_REWARDS,Wyndham Rewards,HOTEL,,Wyndham points,
+RADISSON_REWARDS,Radisson Rewards,HOTEL,,Radisson points,
+CLUB_ITC,Club ITC,HOTEL,,Green Points,ITC Hotels no longer on the Axis list as of Sept 2026.
+SHANGRI_LA_CIRCLE,Shangri-La Circle,HOTEL,,Points,
+JUMEIRAH_ONE,Jumeirah One,HOTEL,,Points,
+ORCHID_REWARDS,Orchid Rewards (Petals),HOTEL,,Petals,
+POSTCARD_SUNSHINE_CLUB,The Postcard Sunshine Club,HOTEL,,Points,

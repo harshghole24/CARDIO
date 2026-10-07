@@ -58,6 +58,18 @@ export const api = {
     if (!res.ok) throw new Error('Failed to fetch recommendation');
     return res.json();
   },
+  deleteCard: async (userCardId: string) => {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${API_URL}/cards/${userCardId}`, {
+      method: 'DELETE',
+      headers,
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || 'Failed to delete card');
+    }
+    return res.json();
+  },
   getTransactions: async () => {
     const headers = await getAuthHeaders();
     const res = await fetch(`${API_URL}/transactions`, { headers });
@@ -71,7 +83,49 @@ export const api = {
       headers,
       body: JSON.stringify(data)
     });
-    if (!res.ok) throw new Error('Failed to add transaction');
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || 'Failed to add transaction');
+    }
     return res.json();
-  }
+  },
+  updateTransaction: async (id: string, data: any) => {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${API_URL}/transactions/${id}`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Failed to update transaction');
+    return res.json();
+  },
+  deleteTransaction: async (id: string) => {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${API_URL}/transactions/${id}`, {
+      method: 'DELETE',
+      headers,
+    });
+    if (!res.ok) throw new Error('Failed to delete transaction');
+    return res.json();
+  },
+  saveTravelGoal: async (data: any) => {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${API_URL}/travel-goals`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Failed to save travel goal');
+    return res.json();
+  },
+  getBestCardForPurchase: async (amount: number, category: string) => {
+    const headers = await getAuthHeaders();
+    const res = await fetch(`${API_URL}/recommendations`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ amount, category })
+    });
+    if (!res.ok) throw new Error('Failed to get recommendation');
+    return res.json();
+  },
 };

@@ -8,12 +8,17 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 app.use(express.json());
 
-// Initialize Supabase Client
+// Initialize Supabase Client — use service-role key on server for auth.getUser() to work reliably
 const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || ''; // Ideally use SERVICE_ROLE for admin tasks
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Middleware to verify Supabase JWT
@@ -25,7 +30,8 @@ const authMiddleware = async (req: express.Request, res: express.Response, next:
   const { data: { user }, error } = await supabase.auth.getUser(token);
   
   if (error || !user) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    console.error('[AUTH] Token verification failed:', error?.message || 'No user');
+    return res.status(401).json({ error: 'Unauthorized — invalid or expired session token' });
   }
   
   // Attach user and authenticated supabase client to request
@@ -156,6 +162,20 @@ app.post('/api/cards', authMiddleware, async (req, res) => {
   res.json(data);
 });
 
+app.delete('/api/cards/:id', authMiddleware, async (req, res) => {
+  const userId = (req as any).user.id;
+  const cardId = req.params.id;
+  
+  const { error } = await (req as any).supabase
+    .from('user_cards')
+    .delete()
+    .eq('id', cardId)
+    .eq('user_id', userId);
+    
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ success: true });
+});
+
 // --- TRANSACTIONS ---
 app.get('/api/transactions', authMiddleware, async (req, res) => {
   const userId = (req as any).user.id;
@@ -215,6 +235,37 @@ app.post('/api/transactions', authMiddleware, async (req, res) => {
     
   if (error) return res.status(500).json({ error: error.message });
   res.json(data);
+});
+
+app.patch('/api/transactions/:id', authMiddleware, async (req, res) => {
+  const userId = (req as any).user.id;
+  const { id } = req.params;
+  const { merchant, amount, date, category_id } = req.body;
+
+  const { data, error } = await (req as any).supabase
+    .from('transactions')
+    .update({ merchant, amount, date, category_id })
+    .eq('id', id)
+    .eq('user_id', userId)
+    .select()
+    .single();
+
+  if (error) return res.status(500).json({ error: error.message });
+  res.json(data);
+});
+
+app.delete('/api/transactions/:id', authMiddleware, async (req, res) => {
+  const userId = (req as any).user.id;
+  const { id } = req.params;
+
+  const { error } = await (req as any).supabase
+    .from('transactions')
+    .delete()
+    .eq('id', id)
+    .eq('user_id', userId);
+
+  if (error) return res.status(500).json({ error: error.message });
+  res.json({ success: true });
 });
 
 // --- TRAVEL GOALS ---

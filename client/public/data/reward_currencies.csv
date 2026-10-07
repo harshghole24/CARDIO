@@ -1,0 +1,29 @@
+currency_id,name,issuer,type
+AMEX_MR,Amex Membership Rewards,American Express,TRANSFERABLE
+AU_RP,AU Reward Points,AU Small Finance Bank,POINTS
+AXIS_EDGE_MILES,Axis EDGE Miles,Axis Bank,TRANSFERABLE_MILES
+AXIS_EDGE_RP,Axis EDGE Reward Points,Axis Bank,TRANSFERABLE
+BOB_RP,BOB Reward Points,Bank of Baroda,POINTS
+CHEQ_POINTS,CheQ Points,CheQ / AU,POINTS
+EMIRATES_SKYWARDS,Emirates Skywards Miles,Emirates (earned directly),AIRLINE_MILES
+FEDERAL_RP,Federal Reward Points,Federal Bank,TRANSFERABLE
+HDFC_RP,HDFC Reward Points,HDFC Bank,TRANSFERABLE
+HSBC_RP,HSBC Reward Points,HSBC,TRANSFERABLE
+ICICI_RP,ICICI Reward Points,ICICI Bank,TRANSFERABLE_LIMITED
+IDFC_RP,IDFC FIRST Reward Points,IDFC FIRST Bank,POINTS
+INDIGO_BLUCHIP,IndiGo BluChip,IndiGo (earned directly),AIRLINE_POINTS
+INDUSIND_RP,IndusInd Reward Points,IndusInd Bank,TRANSFERABLE
+JUPITER_JEWELS,Jupiter Jewels,Jupiter / CSB,POINTS
+KOTAK_AIR_MILES,Kotak Air Miles,Kotak Mahindra Bank,TRANSFERABLE_MILES
+KOTAK_RP,Kotak Reward Points,Kotak Mahindra Bank,POINTS
+AVIOS,Avios (BA Executive Club / Qatar Privilege Club),IndusInd Bank co-brand,AIRLINE_MILES
+MARRIOTT_BONVOY,Marriott Bonvoy Points,Marriott (earned directly),HOTEL_POINTS
+MILES_AND_MORE,Lufthansa Miles & More Award Miles,Lufthansa (earned directly),AIRLINE_MILES
+RBL_RP,RBL Reward Points,RBL Bank,TRANSFERABLE_LIMITED
+SBI_RP,SBI Reward Points,SBI Card,TRANSFERABLE_LIMITED
+SBI_TRAVEL_CREDITS,SBI Card Travel Credits,SBI Card,TRANSFERABLE_MILES
+SC_RP,Standard Chartered Reward Points,Standard Chartered,POINTS
+SPICEJET_SPICECLUB,SpiceJet SpiceClub,SpiceJet (earned directly),AIRLINE_POINTS
+TATA_NEUCOINS,Tata NeuCoins,Tata Neu,POINTS
+YES_RP,YES Reward Points,YES Bank,TRANSFERABLE_LIMITED
+UNSPECIFIED,Cashback / non-transferable / not valued in source,various,CASHBACK_OR_UNVALUED

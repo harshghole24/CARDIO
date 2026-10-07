@@ -144,7 +144,7 @@ const Dashboard = ({ session }: { session: any }) => {
 
                   <div className="flex gap-4">
                     <button onClick={() => navigate('/travel')} className="pastel-button px-6 py-3">View Execution Plan</button>
-                    <button className="bg-white/5 text-text-primary font-bold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors border border-white/10">Update Goal</button>
+                    <button onClick={() => navigate('/travel')} className="bg-white/5 text-text-primary font-bold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors border border-white/10">Update Goal</button>
                   </div>
                 </div>
               </div>
