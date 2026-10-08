@@ -27,7 +27,12 @@ const MyCards = ({ session }: { session: any }) => {
     try {
       setLoading(true);
       const data = await api.getCards();
-      setCards(data || []);
+      // Enrich with local CSV data since backend no longer joins
+      const enriched = (data || []).map((c: any) => ({
+        ...c,
+        credit_cards: store?.cardById.get(c.card_id)
+      }));
+      setCards(enriched);
     } catch (err) {
       console.error(err);
     } finally {
@@ -36,8 +41,10 @@ const MyCards = ({ session }: { session: any }) => {
   };
 
   useEffect(() => {
-    fetchCards();
-  }, []);
+    if (store) {
+      fetchCards();
+    }
+  }, [store]);
 
   const handleRemoveCard = async (userCardId: string) => {
     if (!window.confirm("Are you sure you want to remove this card?")) return;

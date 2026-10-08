@@ -71,9 +71,22 @@ const Transactions = ({ session }: { session: any }) => {
     try {
       setLoading(true);
       const [txns, userCards] = await Promise.all([api.getTransactions(), api.getCards()]);
-      setTransactions(txns || []);
-      setCards(userCards || []);
-      if (userCards?.length > 0) setUserCardId(userCards[0].id);
+      
+      const enrichedCards = (userCards || []).map((c: any) => ({
+        ...c,
+        credit_cards: store?.cardById.get(c.card_id)
+      }));
+      
+      const enrichedTxns = (txns || []).map((t: any) => {
+        if (t.user_cards) {
+          t.user_cards.credit_cards = store?.cardById.get(t.user_cards.card_id);
+        }
+        return t;
+      });
+
+      setTransactions(enrichedTxns);
+      setCards(enrichedCards);
+      if (enrichedCards.length > 0) setUserCardId(enrichedCards[0].id);
     } catch (err) {
       console.error(err);
     } finally {
@@ -81,7 +94,7 @@ const Transactions = ({ session }: { session: any }) => {
     }
   };
 
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => { if (store) fetchData(); }, [store]);
 
   const openAddModal = () => {
     setEditTxn(null);

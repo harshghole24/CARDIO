@@ -1,9 +1,7 @@
+import 'dotenv/config'; // MUST be first to load env before anything else
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
-
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,20 +14,52 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Initialize Supabase Client — use service-role key on server for auth.getUser() to work reliably
+// Initialize Supabase Client
 const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const anonKey = process.env.SUPABASE_ANON_KEY || '';
+const supabaseKey = serviceRoleKey || anonKey;
 
-// Middleware to verify Supabase JWT
+console.log('[DIAGNOSTIC] Server Init - SUPABASE_URL:', supabaseUrl);
+console.log('[DIAGNOSTIC] Server Init - Key used (first 6):', supabaseKey.substring(0, 6));
+console.log('[DIAGNOSTIC] Server Init - Using Service Role:', !!process.env.SUPABASE_SERVICE_ROLE_KEY);
+
+const supabaseAdmin = createClient(supabaseUrl, supabaseKey, {
+  auth: { autoRefreshToken: false, persistSession: false }
+});
+
 const authMiddleware = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   const authHeader = req.headers.authorization;
+  
+  console.log('\n[DIAGNOSTIC] --- Auth Middleware Triggered ---');
+  console.log('[DIAGNOSTIC] Authorization Header exists:', !!authHeader);
+  
   if (!authHeader) return res.status(401).json({ error: 'No authorization header' });
   
-  const token = authHeader.split(' ')[1];
-  const { data: { user }, error } = await supabase.auth.getUser(token);
+  const token = authHeader.replace(/^Bearer\s+/i, '');
+  console.log('[DIAGNOSTIC] Scheme is Bearer:', authHeader.toLowerCase().startsWith('bearer '));
+  console.log('[DIAGNOSTIC] Token first 10 chars:', token.substring(0, 10), '| length:', token.length);
+  
+  // Decode JWT Payload without verification
+  try {
+    const payloadBase64 = token.split('.')[1];
+    const decodedPayload = JSON.parse(Buffer.from(payloadBase64, 'base64').toString('utf-8'));
+    console.log('[DIAGNOSTIC] Decoded JWT payload:', {
+      iss: decodedPayload.iss,
+      aud: decodedPayload.aud,
+      exp: new Date(decodedPayload.exp * 1000).toISOString(),
+      sub: decodedPayload.sub,
+      role: decodedPayload.role
+    });
+    console.log('[DIAGNOSTIC] Token expired (local check):', (decodedPayload.exp * 1000) < Date.now());
+  } catch (e) {
+    console.log('[DIAGNOSTIC] Failed to decode JWT payload:', e);
+  }
+
+  const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
   
   if (error || !user) {
+    console.error('[DIAGNOSTIC] Exact error object from getUser:', JSON.stringify(error, null, 2));
     console.error('[AUTH] Token verification failed:', error?.message || 'No user');
     return res.status(401).json({ error: 'Unauthorized — invalid or expired session token' });
   }
@@ -37,11 +67,8 @@ const authMiddleware = async (req: express.Request, res: express.Response, next:
   // Attach user and authenticated supabase client to request
   (req as any).user = user;
   const userClient = createClient(supabaseUrl, supabaseKey, {
-    global: {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
+    global: { headers: { Authorization: `Bearer ${token}` } },
+    auth: { autoRefreshToken: false, persistSession: false }
   });
   (req as any).supabase = userClient;
 
@@ -128,7 +155,7 @@ app.get('/api/cards', authMiddleware, async (req, res) => {
   const userId = (req as any).user.id;
   const { data, error } = await (req as any).supabase
     .from('user_cards')
-    .select('*, credit_cards(*)')
+    .select('*')
     .eq('user_id', userId);
   
   if (error) return res.status(500).json({ error: error.message });
@@ -181,7 +208,7 @@ app.get('/api/transactions', authMiddleware, async (req, res) => {
   const userId = (req as any).user.id;
   const { data, error } = await (req as any).supabase
     .from('transactions')
-    .select('*, user_cards(*, credit_cards(*))')
+    .select('*, user_cards(*)')
     .eq('user_id', userId)
     .order('date', { ascending: false });
     
@@ -197,7 +224,7 @@ app.post('/api/transactions', authMiddleware, async (req, res) => {
   // Fetch the card details to determine reward rules
   const { data: userCard } = await (req as any).supabase
     .from('user_cards')
-    .select('*, credit_cards(reward_type, reward_rate)')
+    .select('*')
     .eq('id', user_card_id)
     .single();
     
@@ -311,7 +338,7 @@ app.post('/api/recommendations', authMiddleware, async (req, res) => {
   try {
     const { data: userCards } = await (req as any).supabase
       .from('user_cards')
-      .select('*, credit_cards(*)')
+      .select('*')
       .eq('user_id', userId)
       .eq('is_active', true);
 
