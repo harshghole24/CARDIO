@@ -1,0 +1,281 @@
+card_id,name,issuer,network,tier,annual_fee_inr,joining_fee_inr,fee_waiver_spend_inr,forex_markup_pct,base_reward_rate_pct,max_reward_rate_pct,reward_currency_id,point_value_paise,base_points_per_100_inr_derived,max_points_per_100_inr_derived,earns_program_directly,source
+amex-centurion,American Express Centurion Card,AMEX,AMEX,SUPER_PREMIUM,275000,700000,,,1.2,1.2,AMEX_MR,60.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-gold,American Express Gold Card,AMEX,AMEX,PREMIUM,4500,1000,,3.5,1,1,AMEX_MR,50.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-mrcc,American Express Membership Rewards Credit Card,AMEX,AMEX,MID,4500,1000,150000,3.5,1,1,AMEX_MR,50.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-platinum-charge,American Express Platinum Card,AMEX,AMEX,SUPER_PREMIUM,66000,66000,,3.5,1.5,4.5,AMEX_MR,60.0,2.5,7.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-platinum-reserve,American Express Platinum Reserve Credit Card,AMEX,AMEX,PREMIUM,10000,10000,1000000,3.5,1,1,AMEX_MR,50.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-platinum-travel,American Express Platinum Travel Credit Card,AMEX,AMEX,PREMIUM,5000,5000,,3.5,1,1,AMEX_MR,50.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+amex-smartearn,American Express SmartEarn Credit Card,AMEX,AMEX,ENTRY,495,495,40000,3.5,1,10,AMEX_MR,50.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-altura,AU Altura Credit Card,AU,RUPAY,ENTRY,199,199,40000,3.49,1,2,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-altura-plus,AU Altura Plus Credit Card,AU,RUPAY,ENTRY,499,499,80000,3.49,1.5,1.5,AU_RP,25.0,6.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-ananta,AU Ananta Credit Card,AU,VISA,MID,2000,2000,300000,3.49,0.5,1.25,AU_RP,25.0,2.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-ca,AU CA Credit Card,AU,VISA,MID,0,0,,1.99,0.5,2,AU_RP,25.0,2.0,8.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-cs,AU CS Credit Card,AU,VISA,MID,0,0,,1.99,0.5,2,AU_RP,25.0,2.0,8.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-instapay,AU InstaPay Credit Card,AU,RUPAY,ENTRY,0,0,,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-ixigo,ixigo AU Credit Card,AU,RUPAY,MID,0,0,,0,0.63,0.63,AU_RP,25.0,2.52,2.52,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-kosmo,AU Kosmo Credit Card,AU,RUPAY,ENTRY,0,0,,3.49,1.5,1.5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-laksya,AU Laksya Credit Card,AU,VISA,MID,1000,1000,200000,3.49,0.5,1.25,AU_RP,25.0,2.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-lit,AU LIT Credit Card,AU,VISA,MID,0,0,,3.49,0.25,5,AU_RP,25.0,1.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-nomo,AU NOMO Credit Card,AU,VISA,ENTRY,0,199,,0.99,0.5,0.5,AU_RP,25.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-paytm,Paytm AU Credit Card,AU,RUPAY,ENTRY,0,0,,3.49,1,5,AU_RP,100.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-prathama,AU Prathama Credit Card,AU,RUPAY,ENTRY,100,100,75000,3.49,0.25,0.25,AU_RP,25.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-spont,AU SPONT Credit Card,AU,RUPAY,ENTRY,299,299,,3.49,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-tejas,AU Tejas Credit Card,AU,VISA,ENTRY,500,500,150000,3.49,0.25,10,AU_RP,25.0,1.0,40.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-traverse,AU Traverse Credit Card,AU,VISA,PREMIUM,4999,4999,600000,0.99,0.5,1,AU_RP,25.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-vetta,AU Bank Vetta Credit Card,AU,VISA,MID,2999,2999,150000,2.99,0.5,1,AU_RP,25.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-xcite,AU Bank Xcite Credit Card,AU,RUPAY,ENTRY,249,249,100000,3.49,0.75,3.75,AU_RP,25.0,3.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-xcite-ace,AU Xcite Ace Credit Card,AU,RUPAY,MID,749,749,200000,3.49,2,2,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-xcite-ultra,AU Xcite Ultra Credit Card,AU,RUPAY,MID,749,749,200000,3.49,1,3,AU_RP,25.0,4.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-zenith,AU Zenith Credit Card,AU,VISA,PREMIUM,7999,7999,500000,1.99,0.75,1.25,AU_RP,25.0,3.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+au-zenith-plus,AU Zenith Plus Credit Card,AU,VISA,PREMIUM,4999,4999,800000,0.99,1,2,AU_RP,100.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-ace,Axis Bank ACE Credit Card,AXIS,VISA,ENTRY,499,499,200000,3.5,1.5,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-airtel,Axis Bank Airtel Credit Card,AXIS,VISA,MID,500,500,200000,3.5,1,25,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-atlas,Axis Bank Atlas Credit Card,AXIS,MASTERCARD,PREMIUM,5000,5000,,3.5,4,4,AXIS_EDGE_MILES,200.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-burgundy-private,Axis Bank Burgundy Private Credit Card,AXIS,VISA,SUPER_PREMIUM,100000,100000,,0,6,6,AXIS_EDGE_RP,80.0,7.5,7.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-cashback,Axis Bank Cashback Credit Card,AXIS,VISA,MID,1000,1000,400000,3.5,0.75,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-fibe,Fibe Axis Bank Credit Card,AXIS,RUPAY,ENTRY,0,0,,3.5,1,3,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-flipkart,Axis Bank Flipkart Credit Card,AXIS,VISA,MID,500,500,350000,3.5,1,7.5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-flipkart-super-elite,Flipkart Axis Bank Super Elite Credit Card,AXIS,VISA,MID,500,500,200000,3.5,1,6,AXIS_EDGE_RP,50.0,2.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-freecharge,Axis Bank Freecharge Credit Card,AXIS,VISA,ENTRY,250,250,,3.5,0.2,0.2,AXIS_EDGE_RP,20.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-freecharge-plus,Axis Bank Freecharge Plus Credit Card,AXIS,VISA,ENTRY,350,350,50000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-google-pay-flex,Google Pay Flex Axis Bank Credit Card,AXIS,RUPAY,ENTRY,0,0,,3.5,0.4,0.4,AXIS_EDGE_RP,100.0,0.4,0.4,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-horizon,Axis Bank Horizon Credit Card,AXIS,VISA,MID,3000,3000,,3.5,2,2,AXIS_EDGE_MILES,100.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-indianoil,IndianOil Axis Bank Credit Card,AXIS,VISA,ENTRY,500,500,350000,3.5,0.2,4,AXIS_EDGE_RP,20.0,1.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-indianoil-premium,IndianOil Axis Bank Premium Credit Card,AXIS,VISA,MID,1000,1000,30000,3.5,0.67,4,AXIS_EDGE_MILES,100.0,0.67,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-indigo,IndiGo Axis Bank Credit Card,AXIS,VISA,ENTRY,799,799,,3.5,0.42,1.26,INDIGO_BLUCHIP,42.0,1.0,3.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-indigo-premium,IndiGo Axis Bank Premium Credit Card,AXIS,VISA,PREMIUM,5000,5000,,2.5,0.84,2.94,INDIGO_BLUCHIP,42.0,2.0,7.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-lic,LIC Axis Bank Signature Credit Card,AXIS,VISA,ENTRY,0,0,,3.5,0.95,1.9,AXIS_EDGE_RP,95.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-magnus,Axis Bank Magnus Credit Card,AXIS,MASTERCARD,PREMIUM,12500,12500,2500000,2,2.4,2.4,AXIS_EDGE_RP,40.0,6.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-miles-more,Miles & More Axis Bank World Credit Card,AXIS,MASTERCARD,PREMIUM,3500,3500,,3.5,2,2,MILES_AND_MORE,100.0,2.0,2.0,MILES_AND_MORE,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-miles-more-select,Miles & More Axis Bank World Select Credit Card,AXIS,MASTERCARD,PREMIUM,4500,10000,,3.5,3,3,MILES_AND_MORE,100.0,3.0,3.0,MILES_AND_MORE,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-myzone,Axis Bank MyZone Credit Card,AXIS,VISA,ENTRY,500,500,,3.5,0.4,0.4,AXIS_EDGE_RP,20.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-neo,Axis Bank Neo Credit Card,AXIS,VISA,ENTRY,250,250,,3.5,0.1,0.1,AXIS_EDGE_RP,20.0,0.5,0.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-olympus,Axis Bank Olympus Credit Card,AXIS,VISA,SUPER_PREMIUM,20000,20000,,1.8,4,8,AXIS_EDGE_MILES,400.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-primus,Axis Bank Primus Credit Card,AXIS,VISA,SUPER_PREMIUM,300000,500000,,0,5,5,AXIS_EDGE_MILES,500.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-privilege,Axis Bank Privilege Credit Card,AXIS,VISA,MID,1500,1500,500000,3.5,1,1,AXIS_EDGE_RP,20.0,5.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-reserve,Axis Bank Reserve Credit Card,AXIS,MASTERCARD,SUPER_PREMIUM,50000,50000,3500000,1.5,3,6,AXIS_EDGE_RP,40.0,7.5,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-rewards,Axis Bank Rewards Credit Card,AXIS,VISA,MID,1000,1000,200000,3.5,0.32,3.2,AXIS_EDGE_RP,20.0,1.6,16.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-samsung-infinite,Samsung Axis Bank Infinite Credit Card,AXIS,VISA,PREMIUM,5000,5000,700000,3.5,1,10,AXIS_EDGE_RP,20.0,5.0,50.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-samsung-signature,Samsung Axis Bank Signature Credit Card,AXIS,VISA,MID,500,500,200000,3.5,1,10,AXIS_EDGE_RP,20.0,5.0,50.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-select,Axis Bank Select Credit Card,AXIS,VISA,PREMIUM,3000,3000,800000,3.5,1,2,AXIS_EDGE_RP,20.0,5.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-shoppers-stop,Axis Bank Shoppers Stop Credit Card,AXIS,VISA,MID,500,500,100000,3.5,0.5,5,AXIS_EDGE_RP,50.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-spicejet-voyage,SpiceJet Axis Bank Voyage Credit Card,AXIS,VISA,MID,750,750,,3.5,0.75,4.5,SPICEJET_SPICECLUB,50.0,1.5,9.0,SPICEJET_SPICECLUB,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-spicejet-voyage-black,SpiceJet Axis Bank Voyage Black Credit Card,AXIS,VISA,PREMIUM,2000,2000,,3.5,1.5,7,SPICEJET_SPICECLUB,50.0,3.0,14.0,SPICEJET_SPICECLUB,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+axis-supermoney,Axis Bank SUPERMONEY RuPay Credit Card,AXIS,RUPAY,ENTRY,0,0,,3.5,1,3,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bharatpe,Unity Bank BharatPe Credit Card,UNITY,RUPAY,ENTRY,0,0,,3.5,2,2,UNSPECIFIED,100.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-cashback,BOBCARD Cashback Credit Card,BOB,MASTERCARD,MID,499,499,,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-cma-one,CMA One BOBCARD Credit Card,BOB,MASTERCARD,MID,0,1,,2,0.25,1.25,BOB_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-easy,BOBCARD Easy Credit Card,BOB,RUPAY,ENTRY,500,500,35000,3.5,0.2,1,BOB_RP,20.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-eterna,Bank of Baroda Eterna Credit Card,BOB,VISA,PREMIUM,2499,2499,250000,2,0.75,3.75,BOB_RP,25.0,3.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-etihad-guest,BOBCARD Etihad Guest Credit Card,BOB,VISA,PREMIUM,2500,2500,300000,1,0.5,1.5,BOB_RP,50.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-etihad-guest-premium,BOBCARD Etihad Guest Premium Credit Card,BOB,VISA,SUPER_PREMIUM,5000,5000,500000,0,1,3,BOB_RP,50.0,2.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-hpcl-energie,HPCL ENERGIE BOBCARD Credit Card,BOB,RUPAY,MID,499,499,50000,3.5,0.33,4,BOB_RP,25.0,1.32,16.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-icai-exclusive,ICAI Exclusive BOBCARD Credit Card,BOB,MASTERCARD,MID,0,0,,2,0.25,1.25,BOB_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-icsi-diamond,ICSI Diamond BOBCARD Credit Card,BOB,MASTERCARD,MID,0,0,,2,0.25,1.25,BOB_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-irctc,IRCTC BOBCARD RuPay Credit Card,BOB,RUPAY,MID,350,500,,3.5,0.5,4,BOB_RP,25.0,2.0,16.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-premier,Bank of Baroda Premier Credit Card,BOB,VISA,MID,1000,1000,120000,3.5,0.5,2.5,BOB_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-prime,BOBCARD Prime Credit Card,BOB,RUPAY,ENTRY,0,0,,3.5,0.4,0.4,BOB_RP,20.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-select,BOBCARD Select Credit Card,BOB,VISA,MID,750,750,70000,3.5,0.2,1,BOB_RP,20.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-snapdeal,Snapdeal BOBCARD Credit Card,BOB,RUPAY,ENTRY,249,249,,3.5,1,5,BOB_RP,25.0,4.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+bob-tiara,Bank of Baroda Tiara Credit Card,BOB,RUPAY,PREMIUM,2499,2499,250000,2,0.75,3.75,BOB_RP,25.0,3.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+cheq-au,CheQ AU Credit Card,AU,RUPAY,MID,0,0,,3.49,0.5,6,CHEQ_POINTS,50.0,1.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+cred-sovereign,CRED Sovereign Credit Card,INDUSIND,RUPAY,SUPER_PREMIUM,,,,,,,INDUSIND_RP,35.0,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+cub-salaryse,CUB SalarySe Level Up Credit Card,CUB,RUPAY,ENTRY,0,0,,2,0.2,1,UNSPECIFIED,20.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+federal-celesta,Federal Bank Celesta Credit Card,FEDERAL,VISA,PREMIUM,0,0,0,2,0.25,0.75,FEDERAL_RP,25.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+federal-imperio,Federal Bank Imperio Credit Card,FEDERAL,VISA,MID,0,0,0,3.5,0.17,0.5,FEDERAL_RP,25.0,0.68,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+federal-signet,Federal Bank Signet Credit Card,FEDERAL,VISA,ENTRY,0,0,0,3.5,0.13,0.38,FEDERAL_RP,25.0,0.52,1.52,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-diners-black,HDFC Diners Club Black Metal Edition,HDFC,DINERS,SUPER_PREMIUM,10000,10000,800000,2,3.33,4.33,HDFC_RP,100.0,3.33,4.33,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-diners-privilege,HDFC Bank Diners Club Privilege Credit Card,HDFC,DINERS,PREMIUM,1000,1000,300000,3.5,1,5,HDFC_RP,50.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-freedom,HDFC Bank Freedom Credit Card,HDFC,VISA,ENTRY,500,500,50000,3.5,0.08,0.75,HDFC_RP,15.0,0.53,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-indianoil,IndianOil HDFC Bank Credit Card,HDFC,RUPAY,ENTRY,500,500,50000,3.5,0.64,4.8,HDFC_RP,96.0,0.67,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-infinia,HDFC Bank Infinia Metal Credit Card,HDFC,VISA,SUPER_PREMIUM,12500,12500,1000000,2,3.3,3.3,HDFC_RP,100.0,3.3,3.3,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-irctc,IRCTC HDFC Bank Credit Card,HDFC,RUPAY,MID,500,500,150000,3.5,1,1,HDFC_RP,100.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-marriott-bonvoy,Marriott Bonvoy HDFC Bank Credit Card,HDFC,DINERS,PREMIUM,3000,3000,,3.5,0.8,1.6,MARRIOTT_BONVOY,60.0,1.33,2.67,MARRIOTT_BONVOY,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-millennia,HDFC Millennia Credit Card,HDFC,VISA,MID,1000,1000,100000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-moneyback-plus,HDFC MoneyBack+ Credit Card,HDFC,MASTERCARD,ENTRY,500,500,50000,3.5,0.2,2,HDFC_RP,20.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-phonepe-ultimo,PhonePe HDFC Bank Ultimo Credit Card,HDFC,RUPAY,MID,999,999,200000,3.5,1,10,HDFC_RP,100.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-phonepe-uno,PhonePe HDFC Bank Uno Credit Card,HDFC,RUPAY,ENTRY,499,499,100000,3.5,1,2,HDFC_RP,100.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-pixel-go,HDFC PIXEL Go Credit Card,HDFC,VISA,ENTRY,250,250,50000,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-pixel-play,HDFC PIXEL Play Credit Card,HDFC,VISA,ENTRY,500,500,100000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-regalia-gold,HDFC Regalia Gold Credit Card,HDFC,VISA,PREMIUM,2500,2500,400000,2,1.25,6.25,HDFC_RP,50.0,2.5,12.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-shoppers-stop,Shoppers Stop HDFC Bank Credit Card,HDFC,RUPAY,ENTRY,299,299,,3.5,1,3,HDFC_RP,100.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-shoppers-stop-black,Shoppers Stop Black HDFC Bank Credit Card,HDFC,RUPAY,PREMIUM,4500,4500,,3.5,2,7,HDFC_RP,100.0,2.0,7.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-swiggy,Swiggy HDFC Bank Credit Card,HDFC,MASTERCARD,MID,500,500,200000,3.5,1,10,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-swiggy-blck,Swiggy BLCK HDFC Bank Credit Card,HDFC,MASTERCARD,PREMIUM,1000,1000,200000,3.5,1,10,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-swiggy-orange,Swiggy Ornge HDFC Bank Credit Card,HDFC,MASTERCARD,MID,500,500,150000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-tata-neu-infinity,Tata Neu Infinity HDFC Bank Credit Card,HDFC,RUPAY,MID,1499,1499,300000,2,1.5,5,TATA_NEUCOINS,100.0,1.5,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-tata-neu-plus,Tata Neu Plus HDFC Bank Credit Card,HDFC,RUPAY,MID,499,499,100000,3.5,1,2,TATA_NEUCOINS,100.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hdfc-upi-rupay,HDFC Bank UPI RuPay Credit Card,HDFC,RUPAY,ENTRY,99,99,25000,3.5,0.25,0.75,HDFC_RP,25.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-live-plus,HSBC Live+ Credit Card,HSBC,VISA,MID,999,999,200000,1.99,1.5,10,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-platinum,HSBC Visa Platinum Credit Card,HSBC,VISA,MID,0,0,,3.5,1.33,1.33,HSBC_RP,100.0,1.33,1.33,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-premier,HSBC Premier World Mastercard,HSBC,MASTERCARD,SUPER_PREMIUM,20000,12000,,0.99,3,3,HSBC_RP,100.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-rupay-cashback,HSBC RuPay Cashback Credit Card,HSBC,RUPAY,MID,499,499,200000,3.5,1,10,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-rupay-platinum,HSBC RuPay Platinum Credit Card,HSBC,RUPAY,ENTRY,0,0,,3.5,1.33,1.33,HSBC_RP,100.0,1.33,1.33,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-taj,HSBC Taj Credit Card,HSBC,VISA,SUPER_PREMIUM,110000,110000,,3.5,1.01,3.35,HSBC_RP,67.0,1.51,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+hsbc-travelone,HSBC TravelOne Credit Card,HSBC,MASTERCARD,PREMIUM,4999,4999,800000,3.5,2,4,HSBC_RP,100.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-adani-platinum,Adani One ICICI Bank Platinum Credit Card,ICICI,VISA,MID,750,750,300000,3.5,1,3,ICICI_RP,100.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-adani-signature,Adani One ICICI Bank Signature Credit Card,ICICI,VISA,PREMIUM,5000,5000,600000,3.5,1.5,7,ICICI_RP,100.0,1.5,7.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-amazon-pay,Amazon Pay ICICI Bank Credit Card,ICICI,VISA,ENTRY,0,0,,1.99,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-coral,ICICI Bank Coral Credit Card,ICICI,VISA,MID,500,500,150000,3.5,0.5,0.5,ICICI_RP,25.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-emeralde,ICICI Bank Emeralde Credit Card (Metal),ICICI,VISA,SUPER_PREMIUM,12000,12000,1000000,2,1.6,1.6,ICICI_RP,40.0,4.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-emeralde-private,ICICI Bank Emeralde Private Metal Credit Card,ICICI,VISA,SUPER_PREMIUM,12499,12499,1000000,2,1.2,1.2,ICICI_RP,40.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-emirates-emeralde,Emirates Skywards ICICI Bank Emeralde Credit Card,ICICI,VISA,SUPER_PREMIUM,10000,10000,,3.5,2,2,EMIRATES_SKYWARDS,100.0,2.0,2.0,EMIRATES_SKYWARDS,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-emirates-rubyx,Emirates Skywards ICICI Bank Rubyx Credit Card,ICICI,VISA,MID,1000,1000,,3.5,1,1,EMIRATES_SKYWARDS,100.0,1.0,1.0,EMIRATES_SKYWARDS,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-emirates-sapphiro,Emirates Skywards ICICI Bank Sapphiro Credit Card,ICICI,VISA,PREMIUM,5000,5000,,3.5,1.5,1.5,EMIRATES_SKYWARDS,100.0,1.5,1.5,EMIRATES_SKYWARDS,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-expressions,ICICI Bank Expressions Credit Card,ICICI,VISA,MID,499,499,150000,3.5,0.75,0.75,ICICI_RP,25.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-hpcl-coral,ICICI Bank HPCL Coral Credit Card,ICICI,VISA,ENTRY,199,199,50000,3.5,0.5,2.5,ICICI_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-hpcl-super-saver,ICICI HPCL Super Saver Credit Card,ICICI,VISA,ENTRY,500,500,150000,3.5,0.5,5,ICICI_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-mmt,MakeMyTrip ICICI Bank Credit Card,ICICI,MASTERCARD,MID,999,999,300000,0.99,1,6,ICICI_RP,100.0,1.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-platinum,ICICI Bank Platinum Chip Credit Card,ICICI,VISA,ENTRY,0,0,,3.5,0.5,0.5,ICICI_RP,25.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-rubyx,ICICI Bank Rubyx Credit Card,ICICI,VISA,MID,2000,3000,300000,3.5,0.5,1,ICICI_RP,25.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-sapphiro,ICICI Bank Sapphiro Credit Card,ICICI,MASTERCARD,PREMIUM,3500,6500,600000,3.5,0.5,1,ICICI_RP,25.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+icici-times-black,Times Black ICICI Bank Credit Card,ICICI,VISA,SUPER_PREMIUM,20000,20000,2500000,1.49,0.8,1,ICICI_RP,40.0,2.0,2.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-ashva,IDFC FIRST Ashva Credit Card,IDFC,VISA,PREMIUM,2999,2999,,0,0.83,0.83,IDFC_RP,25.0,3.32,3.32,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-diamond-reserve,IDFC FIRST Diamond Reserve Credit Card,IDFC,VISA,PREMIUM,3000,3000,600000,0,0.5,0.5,IDFC_RP,25.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-digital-rupay,IDFC FIRST Digital RuPay Credit Card,IDFC,RUPAY,ENTRY,199,199,,0,0.13,0.38,IDFC_RP,25.0,0.52,1.52,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-earn,IDFC FIRST EA₹N Credit Card,IDFC,RUPAY,ENTRY,499,0,100000,0,0.5,0.5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-first-classic,IDFC FIRST Classic Credit Card,IDFC,VISA,MID,0,0,,0,0.38,1.25,IDFC_RP,25.0,1.52,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-first-private,IDFC FIRST Private Credit Card,IDFC,VISA,SUPER_PREMIUM,25000,50000,,0,1.67,1.67,IDFC_RP,25.0,6.68,6.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-first-wealth,IDFC FIRST Wealth Credit Card,IDFC,VISA,PREMIUM,0,0,,0,0.38,1.25,IDFC_RP,25.0,1.52,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-gaj,IDFC FIRST Gaj Credit Card,IDFC,VISA,SUPER_PREMIUM,12500,12500,1000000,0,0.83,0.83,IDFC_RP,25.0,3.32,3.32,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-hello-cashback,IDFC FIRST Hello Cashback Credit Card,IDFC,RUPAY,MID,1000,1000,200000,0,1,3,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-hpcl-power,IDFC FIRST HPCL Power+ Credit Card,IDFC,RUPAY,MID,499,499,150000,0,0.5,5,IDFC_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-indigo,IndiGo IDFC FIRST Credit Card,IDFC,MASTERCARD,PREMIUM,4999,4999,,0,1.26,2.52,INDIGO_BLUCHIP,42.0,3.0,6.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-lic-classic,LIC Classic Credit Card,IDFC,MASTERCARD,ENTRY,0,0,,0,0.6,1.2,IDFC_RP,25.0,2.4,4.8,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-lic-select,LIC Select Credit Card,IDFC,MASTERCARD,MID,0,0,,0,1,2,IDFC_RP,25.0,4.0,8.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-mayura,IDFC FIRST Mayura Credit Card,IDFC,VISA,SUPER_PREMIUM,5999,5999,,0,0.83,0.83,IDFC_RP,25.0,3.32,3.32,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-millennia,IDFC FIRST Millennia Credit Card,IDFC,VISA,ENTRY,0,0,,0,0.38,1.25,IDFC_RP,25.0,1.52,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-power,IDFC FIRST Power Credit Card,IDFC,RUPAY,MID,199,199,50000,0,0.33,3.5,IDFC_RP,25.0,1.32,14.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-select,IDFC FIRST Select Credit Card,IDFC,VISA,PREMIUM,0,0,,0,0.38,1.25,IDFC_RP,25.0,1.52,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-swyp,IDFC FIRST SWYP Credit Card,IDFC,MASTERCARD,ENTRY,499,499,,0,1,1,IDFC_RP,25.0,4.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-wow,IDFC FIRST WOW! Credit Card,IDFC,VISA,ENTRY,0,0,,0,0.5,0.5,IDFC_RP,25.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+idfc-wow-black,IDFC FIRST WOW! Black Credit Card,IDFC,MASTERCARD,MID,750,750,150000,0,0.67,0.67,IDFC_RP,25.0,2.68,2.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-avios,IndusInd Bank Avios Visa Infinite Credit Card,INDUSIND,VISA,PREMIUM,5000,10000,,3.5,1.5,3,AVIOS,100.0,1.5,3.0,BA_EXECUTIVE_CLUB|QATAR_PRIVILEGE_CLUB,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-celesta,IndusInd Bank Celesta Credit Card,INDUSIND,AMEX,SUPER_PREMIUM,5000,25000,1000000,3.5,0.75,2.25,INDUSIND_RP,75.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-cred,CRED IndusInd Bank RuPay Credit Card,INDUSIND,RUPAY,MID,499,0,,3.5,1,5,INDUSIND_RP,100.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-crest,IndusInd Bank Crest Credit Card,INDUSIND,MASTERCARD,SUPER_PREMIUM,10000,75000,1000000,1.8,0.75,1.88,INDUSIND_RP,75.0,1.0,2.51,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-duo,IndusInd Bank Duo Card,INDUSIND,VISA,MID,0,0,,3.5,0.34,0.34,INDUSIND_RP,50.0,0.68,0.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-eazydiner,IndusInd Bank EazyDiner Signature Credit Card,INDUSIND,VISA,MID,2999,2999,,3.5,0.4,25,INDUSIND_RP,10.0,4.0,250.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-eazydiner-platinum,EazyDiner IndusInd Bank Platinum Credit Card,INDUSIND,VISA,MID,0,0,,3.5,0.4,20,INDUSIND_RP,20.0,2.0,100.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-epay-amex,IndusInd Bank ePay Amex Credit Card,INDUSIND,AMEX,ENTRY,0,0,,3.5,0.35,0.35,INDUSIND_RP,35.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-indulge,IndusInd Bank Indulge Credit Card,INDUSIND,VISA,SUPER_PREMIUM,10000,75000,1000000,1.8,0.5,0.5,INDUSIND_RP,50.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-jio-bp,IndusInd Bank Jio-bp Mobility+ Credit Card,INDUSIND,RUPAY,MID,0,499,10000,3.5,0.5,3,INDUSIND_RP,25.0,2.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-legend,IndusInd Bank Legend Credit Card,INDUSIND,VISA,PREMIUM,0,5000,,1.8,0.72,0.72,INDUSIND_RP,50.0,1.44,1.44,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-nexxt,IndusInd Bank Nexxt Credit Card,INDUSIND,VISA,PREMIUM,0,10000,,3.5,0.5,0.5,INDUSIND_RP,75.0,0.67,0.67,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-pinnacle,IndusInd Bank Pinnacle Credit Card,INDUSIND,MASTERCARD,SUPER_PREMIUM,0,15000,,3.5,0.75,1.88,INDUSIND_RP,75.0,1.0,2.51,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-pioneer-heritage,IndusInd Bank Pioneer Heritage Credit Card,INDUSIND,MASTERCARD,SUPER_PREMIUM,25000,100000,1000000,0,1,2.5,INDUSIND_RP,100.0,1.0,2.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-pioneer-legacy,IndusInd Bank Pioneer Legacy Credit Card,INDUSIND,VISA,SUPER_PREMIUM,0,50000,,1.8,1.29,1.29,INDUSIND_RP,100.0,1.29,1.29,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-pioneer-private,IndusInd Bank Pioneer Private Credit Card,INDUSIND,VISA,SUPER_PREMIUM,25000,0,1000000,0,3,3,INDUSIND_RP,100.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-platinum,IndusInd Bank Platinum Credit Card,INDUSIND,VISA,MID,0,0,,3.5,0.4,0.4,INDUSIND_RP,40.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-platinum-aura-edge,IndusInd Bank Platinum Aura Edge Credit Card,INDUSIND,VISA,MID,0,0,,3.5,0.2,1.6,INDUSIND_RP,40.0,0.5,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-platinum-rupay,IndusInd Bank Platinum RuPay Credit Card,INDUSIND,RUPAY,MID,0,10000,,3.5,0.7,0.7,INDUSIND_RP,35.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-samman,IndusInd Bank Samman Credit Card,INDUSIND,RUPAY,ENTRY,199,0,75000,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-solitaire,IndusInd Bank Indus Solitaire Credit Card,INDUSIND,MASTERCARD,SUPER_PREMIUM,10000,30000,1000000,0,0.5,0.5,INDUSIND_RP,50.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+indusind-tiger,IndusInd Bank Tiger Credit Card,INDUSIND,VISA,MID,0,0,,1.5,0.4,0.4,INDUSIND_RP,40.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+jupiter-edge,Jupiter Edge+ CSB Bank RuPay Credit Card,CSB,RUPAY,ENTRY,0,0,,3.5,1,10,JUPITER_JEWELS,20.0,5.0,50.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kiwi,Kiwi RuPay Credit Card,YES,RUPAY,ENTRY,0,0,,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-811,Kotak 811 #DreamDifferent Credit Card,KOTAK,VISA,ENTRY,0,250,,3.5,0.2,0.4,KOTAK_RP,20.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-air,Kotak Air Credit Card,KOTAK,VISA,MID,999,999,250000,3.5,1,1,KOTAK_AIR_MILES,100.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-air-plus-prime,Kotak Air+ Prime Credit Card,KOTAK,VISA,MID,3000,3000,400000,2,2,2,KOTAK_AIR_MILES,100.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-cashback-plus-prime,Kotak Cashback+ Prime Credit Card,KOTAK,VISA,MID,750,750,200000,3.5,0.5,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-indianoil,IndianOil Kotak Credit Card,KOTAK,RUPAY,ENTRY,449,449,50000,3.5,0.5,4,KOTAK_RP,25.0,2.0,16.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-indigo,IndiGo Kotak Credit Card,KOTAK,RUPAY,MID,1500,1500,,3.5,0.42,1.26,INDIGO_BLUCHIP,42.0,1.0,3.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-indigo-premium,IndiGo XL Kotak Credit Card,KOTAK,VISA,PREMIUM,3000,3000,,3.5,0.84,2.1,INDIGO_BLUCHIP,42.0,2.0,5.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-league-platinum,Kotak League Platinum Credit Card,KOTAK,VISA,MID,499,499,50000,3.5,0.27,0.27,KOTAK_RP,10.0,2.7,2.7,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-pvr-inox,PVR INOX Kotak Credit Card,KOTAK,RUPAY,ENTRY,499,0,,3.5,0,0,KOTAK_RP,100.0,0.0,0.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-solitaire,Kotak Solitaire Credit Card,KOTAK,VISA,SUPER_PREMIUM,0,0,0,0,3,3,KOTAK_AIR_MILES,100.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-upi-rupay,Kotak UPI RuPay Credit Card,KOTAK,RUPAY,ENTRY,0,0,0,3.5,0.3,0.3,KOTAK_RP,10.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-white,Kotak White Credit Card,KOTAK,VISA,PREMIUM,3000,3000,500000,3.5,0,0,KOTAK_RP,100.0,0.0,0.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-white-reserve,Kotak White Reserve Credit Card,KOTAK,VISA,SUPER_PREMIUM,12500,12500,1000000,2,0,0,KOTAK_RP,100.0,0.0,0.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+kotak-zen-signature,Kotak Zen Signature Credit Card,KOTAK,VISA,PREMIUM,1500,1500,150000,3.5,0.83,1.67,KOTAK_RP,25.0,3.32,6.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+onecard,OneCard Credit Card,BOB,VISA,MID,0,0,,1,0.2,1,BOB_RP,10.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+pop-club,YES Bank POP-CLUB Credit Card,YES,RUPAY,ENTRY,399,0,150000,3.5,0.2,1,YES_RP,10.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-apex,RBL Bank Apex Credit Card,RBL,MASTERCARD,MID,1000,1000,,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-bankbazaar-savemax,RBL Bank BankBazaar SaveMax Credit Card,RBL,MASTERCARD,ENTRY,0,0,,3.5,0.25,1.25,RBL_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-bankbazaar-savemax-pro,RBL Bank BankBazaar SaveMax Pro Credit Card,RBL,MASTERCARD,MID,1499,1499,,3.5,0.5,2.5,RBL_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-binge,RBL Bank Binge Credit Card,RBL,MASTERCARD,ENTRY,999,999,100000,3.5,0.25,3,RBL_RP,25.0,1.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-blockbuster,RBL Bank Blockbuster Credit Card,RBL,MASTERCARD,MID,3000,3000,,3.5,0.25,5,RBL_RP,25.0,1.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-cookies,RBL Bank Cookies Credit Card,RBL,MASTERCARD,ENTRY,1200,0,60000,3.5,0.25,10,RBL_RP,25.0,1.0,40.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-dmi-finance,RBL Bank DMI Finance Credit Card,RBL,MASTERCARD,ENTRY,499,499,,3.5,0.25,0.5,RBL_RP,25.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-icon,RBL Bank Icon Credit Card,RBL,MASTERCARD,MID,5000,5000,,3.5,0.5,5,RBL_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-indianoil,RBL Bank IndianOil Credit Card,RBL,MASTERCARD,ENTRY,500,500,175000,3.5,0.5,5,RBL_RP,50.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-indianoil-xtra,RBL Bank IndianOil XTRA Credit Card,RBL,MASTERCARD,MID,1500,1500,275000,3.5,1,7.5,RBL_RP,50.0,2.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-irctc,RBL Bank IRCTC Credit Card,RBL,RUPAY,ENTRY,500,500,,3.5,0.5,2.5,RBL_RP,100.0,0.5,2.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-lumiere,RBL Bank Lumière Credit Card,RBL,VISA,SUPER_PREMIUM,50000,50000,,0,2,2,RBL_RP,100.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-nova,RBL Bank Nova Credit Card,RBL,VISA,PREMIUM,12500,12500,1000000,2,2,2,RBL_RP,100.0,2.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-paisabazaar-duet,RBL Bank Paisabazaar Duet Credit Card,RBL,MASTERCARD,ENTRY,0,0,,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-paisabazaar-duet-plus,RBL Bank Paisabazaar Duet Plus Credit Card,RBL,MASTERCARD,MID,1499,1499,400000,3.5,1,2.5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-patanjali-swarn,RBL Bank Patanjali Swarn Credit Card,RBL,RUPAY,MID,1499,1499,,3.5,0.25,10,RBL_RP,25.0,1.0,40.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-patanjali-vishisht,RBL Bank Patanjali Vishisht Credit Card,RBL,RUPAY,ENTRY,499,499,150000,3.5,0.25,10,RBL_RP,25.0,1.0,40.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-platinum-maxima,RBL Bank Platinum Maxima Plus Credit Card,RBL,VISA,PREMIUM,2500,2500,,3.5,0.5,2.5,RBL_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-play,RBL Bank Play Credit Card,RBL,MASTERCARD,ENTRY,500,500,150000,3.5,0.25,0.25,RBL_RP,25.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-salaryse-up,RBL Bank SalarySe UP Credit Card,RBL,RUPAY,ENTRY,499,499,200000,3.5,0.2,1,RBL_RP,20.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-shoprite,RBL Bank ShopRite Credit Card,RBL,VISA,ENTRY,500,500,150000,3.5,0.25,5,RBL_RP,25.0,1.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-tvs-credit,RBL Bank TVS Credit Card,RBL,MASTERCARD,ENTRY,500,500,,3.5,0.25,0.5,RBL_RP,25.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-tvs-credit-gold,RBL Bank TVS Gold Credit Card,RBL,MASTERCARD,MID,1500,1500,,3.5,0.5,5,RBL_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-world-safari,RBL Bank World Safari Credit Card,RBL,MASTERCARD,PREMIUM,3000,3000,,0,0.5,1.25,RBL_RP,25.0,2.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+rbl-world-safari-lite,RBL Bank World Safari Lite Credit Card,RBL,MASTERCARD,MID,1000,1000,,0,0,0.25,RBL_RP,25.0,0.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+roarbank,Roarbank RuPay Credit Card,UNITY,RUPAY,ENTRY,0,0,,3.5,0,0,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-apollo,Apollo SBI Card,SBI,MASTERCARD,ENTRY,499,499,100000,3.5,0.5,3,SBI_RP,100.0,0.5,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-apollo-select,Apollo SBI Card SELECT,SBI,MASTERCARD,MID,1499,1499,300000,3.5,0.5,10,SBI_RP,100.0,0.5,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-aurum,SBI Card AURUM,SBI,MASTERCARD,SUPER_PREMIUM,9999,9999,1200000,1.99,1,1,SBI_RP,25.0,4.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-bpcl,BPCL SBI Card,SBI,VISA,MID,499,499,100000,3.5,0.25,3.25,SBI_RP,25.0,1.0,13.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-bpcl-octane,BPCL SBI Card Octane,SBI,VISA,MID,1499,1499,200000,3.5,0.25,6.25,SBI_RP,25.0,1.0,25.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-cashback,SBI Cashback Credit Card,SBI,VISA,MID,999,999,200000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-doctors,Doctor's SBI Card,SBI,VISA,MID,1499,1499,200000,3.5,0.25,1.25,SBI_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-doctors-ima,Doctor's SBI Card (in Association with IMA),SBI,VISA,MID,1499,1499,200000,3.5,0.25,1.25,SBI_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-elite,SBI Card ELITE,SBI,MASTERCARD,PREMIUM,4999,4999,1000000,1.99,0.5,2.5,SBI_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-flipkart,Flipkart SBI Card,SBI,MASTERCARD,MID,500,500,350000,3.5,1,7.5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-indigo,IndiGo SBI Card,SBI,MASTERCARD,MID,1499,1499,,3.5,0.42,1.26,INDIGO_BLUCHIP,42.0,1.0,3.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-indigo-elite,IndiGo SBI Card ELITE,SBI,MASTERCARD,PREMIUM,4999,4999,,3.5,0.84,2.94,INDIGO_BLUCHIP,42.0,2.0,7.0,INDIGO_BLUCHIP,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-irctc-platinum,IRCTC SBI Platinum Card,SBI,VISA,ENTRY,500,500,,3.5,0.8,8,SBI_RP,100.0,0.8,8.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-irctc-premier,IRCTC SBI Card Premier,SBI,VISA,MID,1499,1499,200000,3.5,0.8,8,SBI_RP,100.0,0.8,8.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-krisflyer,KrisFlyer SBI Card,SBI,MASTERCARD,PREMIUM,2999,2999,,3.5,0.5,1.25,SBI_RP,50.0,1.0,2.5,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-krisflyer-apex,KrisFlyer SBI Card Apex,SBI,MASTERCARD,SUPER_PREMIUM,9999,9999,,3.5,1.5,2,SBI_RP,50.0,3.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-landmark,Landmark Rewards SBI Card,SBI,VISA,ENTRY,499,499,,3.5,0.25,2.5,SBI_RP,25.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-landmark-prime,Landmark Rewards SBI Card PRIME,SBI,VISA,PREMIUM,2999,2999,,3.5,0.5,6.25,SBI_RP,25.0,2.0,25.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-landmark-select,Landmark Rewards SBI Card SELECT,SBI,VISA,MID,1499,1499,,3.5,0.5,3.75,SBI_RP,25.0,2.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-miles,SBI Card MILES,SBI,MASTERCARD,MID,1499,1499,600000,3,0.25,0.5,SBI_TRAVEL_CREDITS,50.0,0.5,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-miles-elite,SBI Card Miles Elite,SBI,MASTERCARD,PREMIUM,4999,4999,1500000,1.99,0.5,1.5,SBI_TRAVEL_CREDITS,50.0,1.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-miles-prime,SBI Card MILES PRIME,SBI,MASTERCARD,PREMIUM,2999,2999,1000000,2.5,0.5,1,SBI_TRAVEL_CREDITS,50.0,1.0,2.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-paytm,Paytm SBI Card,SBI,VISA,ENTRY,499,499,,3.5,1,3,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-paytm-select,Paytm SBI Card SELECT,SBI,VISA,MID,1499,1499,200000,3.5,1,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-phonepe-purple,PhonePe SBI Card PURPLE,SBI,RUPAY,ENTRY,499,499,100000,3.5,1,3,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-phonepe-select-black,PhonePe SBI Card SELECT BLACK,SBI,RUPAY,MID,1499,1499,300000,3.5,1,10,SBI_RP,100.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-prime,SBI Card PRIME,SBI,MASTERCARD,PREMIUM,2999,2999,300000,3.5,0.5,2.5,SBI_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-pulse,SBI Card PULSE,SBI,VISA,MID,1499,1499,200000,3.5,0.5,2.5,SBI_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-reliance,Reliance SBI Card,SBI,MASTERCARD,ENTRY,499,499,100000,3.5,0.25,2.5,SBI_RP,25.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-reliance-prime,Reliance SBI Card PRIME,SBI,MASTERCARD,PREMIUM,2999,2999,300000,3.5,0.5,5,SBI_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-shaurya,Shaurya SBI Card,SBI,RUPAY,ENTRY,250,250,50000,3.5,0.25,1.25,SBI_RP,25.0,1.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-shaurya-select,Shaurya Select SBI Card,SBI,RUPAY,MID,1499,0,150000,3.5,0.5,2.5,SBI_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-simply-click,SBI SimplyCLICK Credit Card,SBI,VISA,ENTRY,499,499,100000,3.5,0.25,2.5,SBI_RP,25.0,1.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-simply-save,SBI SimplySAVE Credit Card,SBI,VISA,ENTRY,499,499,100000,3.5,0.17,1.67,SBI_RP,25.0,0.68,6.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-tata-neu-infinity,Tata Neu Infinity SBI Card,SBI,RUPAY,MID,1499,1499,300000,1.99,1.5,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-tata-neu-plus,Tata Neu Plus SBI Card,SBI,RUPAY,ENTRY,499,499,100000,3.5,1,2,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-titan,Titan SBI Card,SBI,VISA,PREMIUM,2999,2999,300000,3.5,1.5,1.5,SBI_RP,25.0,6.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbi-unnati,SBI Card Unnati,SBI,VISA,ENTRY,499,0,,3.5,0.25,0.25,SBI_RP,25.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sbm-zet,SBM ZET Credit Card,SBM,RUPAY,ENTRY,0,0,,2.49,2,2,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-beyond,Standard Chartered Beyond Credit Card,SC,VISA,SUPER_PREMIUM,25000,15000,,2,3.33,3.33,SC_RP,100.0,3.33,3.33,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-digismart,Standard Chartered DigiSmart Credit Card,SC,VISA,MID,588,0,60000,3.5,0,15,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-easemytrip,Standard Chartered EaseMyTrip Credit Card,SC,VISA,ENTRY,350,350,50000,3.5,0.5,2.5,SC_RP,25.0,2.0,10.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-manhattan-platinum,Standard Chartered Manhattan Platinum Credit Card,SC,VISA,MID,999,999,120000,3.5,0.5,5,SC_RP,25.0,2.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-platinum-rewards,Standard Chartered Platinum Rewards Credit Card,SC,VISA,ENTRY,0,0,,3.5,0.17,0.83,SC_RP,25.0,0.68,3.32,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-priority-visa-infinite,Standard Chartered Priority Visa Infinite Credit Card,SC,VISA,PREMIUM,0,0,,3.5,0.5,1.25,SC_RP,25.0,2.0,5.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-rewards,Standard Chartered Rewards Credit Card,SC,MASTERCARD,MID,1000,0,150000,3.5,0.67,0.67,SC_RP,25.0,2.68,2.68,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-smart,Standard Chartered Smart Credit Card,SC,VISA,ENTRY,499,0,120000,3.5,1,2,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-super-value-titanium,Standard Chartered Super Value Titanium Credit Card,SC,MASTERCARD,MID,750,750,90000,3.5,0.17,5,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+sc-ultimate,Standard Chartered Ultimate Credit Card,SC,MASTERCARD,PREMIUM,5000,5000,,2,3.33,3.33,SC_RP,100.0,3.33,3.33,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+scapia-federal,Scapia Credit Card,FEDERAL,VISA,MID,0,0,,0,2,4,FEDERAL_RP,20.0,10.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+slice,slice UPI Credit Card,SLICE,RUPAY,ENTRY,0,0,,0,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+uni-goldx,BOBCARD Uni GoldX Credit Card,BOB,VISA,ENTRY,0,0,,0,1,1,BOB_RP,100.0,1.0,1.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+utkarsh-supercard,super.money superCard (Utkarsh SFB),UTKARSH,RUPAY,ENTRY,0,0,,3.5,1,1,UNSPECIFIED,,,,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-ace,YES Bank Ace Credit Card,YES,VISA,ENTRY,499,499,50000,3.5,0.4,0.8,YES_RP,20.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-elite-plus,YES Bank Elite+ Credit Card,YES,MASTERCARD,MID,999,999,200000,3,0.6,1.2,YES_RP,20.0,3.0,6.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-essence,YES Bank Essence Credit Card,YES,VISA,MID,799,799,100000,3,0.4,0.8,YES_RP,20.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-first-exclusive,YES First Exclusive Credit Card (now YES Bank RESERV),YES,MASTERCARD,PREMIUM,2499,2499,300000,2,1.5,3,YES_RP,25.0,6.0,12.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-marquee,YES Bank Marquee Credit Card,YES,MASTERCARD,SUPER_PREMIUM,4999,9999,1000000,1,2.25,4.5,YES_RP,25.0,9.0,18.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-private,YES Private Credit Card,YES,MASTERCARD,SUPER_PREMIUM,10000,50000,2500000,0.5,2.5,5,YES_RP,25.0,10.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-private-prime,YES Private Prime Credit Card,YES,MASTERCARD,SUPER_PREMIUM,10000,20000,2000000,0.5,2.5,5,YES_RP,25.0,10.0,20.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-select,YES Bank Select Credit Card,YES,VISA,ENTRY,599,599,100000,3.5,0.4,0.8,YES_RP,20.0,2.0,4.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+yes-wellness-plus,YES Bank Wellness Plus Credit Card,YES,VISA,MID,1499,1499,,3.5,0.6,3,YES_RP,20.0,3.0,15.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv
+zagg,YES Bank Zagg Credit Card,YES,RUPAY,ENTRY,0,0,,3.5,0.75,0.75,YES_RP,25.0,3.0,3.0,,https://cardadvisor.in/data/cards.csv + https://cardadvisor.in/data/valuations.csv

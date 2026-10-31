@@ -1,0 +1,97 @@
+iata,name,city,country_code,category,lat,lon
+DEL,Indira Gandhi International,Delhi,IN,DOMESTIC_INDIA,28.56,77.10
+BOM,Chhatrapati Shivaji Maharaj International,Mumbai,IN,DOMESTIC_INDIA,19.09,72.87
+BLR,Kempegowda International,Bengaluru,IN,DOMESTIC_INDIA,13.20,77.71
+MAA,Chennai International,Chennai,IN,DOMESTIC_INDIA,12.99,80.17
+HYD,Rajiv Gandhi International,Hyderabad,IN,DOMESTIC_INDIA,17.24,78.43
+CCU,Netaji Subhas Chandra Bose International,Kolkata,IN,DOMESTIC_INDIA,22.65,88.45
+GOI,Dabolim (Goa International),Goa (South),IN,DOMESTIC_INDIA,15.38,73.83
+GOX,Manohar International (Mopa),Goa (North),IN,DOMESTIC_INDIA,15.74,73.86
+PNQ,Pune International,Pune,IN,DOMESTIC_INDIA,18.58,73.92
+AMD,Sardar Vallabhbhai Patel International,Ahmedabad,IN,DOMESTIC_INDIA,23.08,72.63
+COK,Cochin International,Kochi,IN,DOMESTIC_INDIA,10.15,76.40
+TRV,Thiruvananthapuram International,Thiruvananthapuram,IN,DOMESTIC_INDIA,8.48,76.92
+CCJ,Calicut International,Kozhikode,IN,DOMESTIC_INDIA,11.14,75.95
+CNN,Kannur International,Kannur,IN,DOMESTIC_INDIA,11.92,75.55
+IXE,Mangaluru International,Mangaluru,IN,DOMESTIC_INDIA,12.96,74.89
+JAI,Jaipur International,Jaipur,IN,DOMESTIC_INDIA,26.82,75.81
+LKO,Chaudhary Charan Singh International,Lucknow,IN,DOMESTIC_INDIA,26.76,80.89
+VNS,Lal Bahadur Shastri International,Varanasi,IN,DOMESTIC_INDIA,25.45,82.86
+PAT,Jay Prakash Narayan International,Patna,IN,DOMESTIC_INDIA,25.59,85.09
+GAU,Lokpriya Gopinath Bordoloi International,Guwahati,IN,DOMESTIC_INDIA,26.11,91.59
+IXC,Chandigarh International,Chandigarh,IN,DOMESTIC_INDIA,30.67,76.79
+ATQ,Sri Guru Ram Dass Jee International,Amritsar,IN,DOMESTIC_INDIA,31.71,74.80
+SXR,Srinagar International,Srinagar,IN,DOMESTIC_INDIA,33.99,74.77
+IXL,Kushok Bakula Rimpochee,Leh,IN,DOMESTIC_INDIA,34.14,77.55
+IDR,Devi Ahilya Bai Holkar,Indore,IN,DOMESTIC_INDIA,22.72,75.80
+NAG,Dr. Babasaheb Ambedkar International,Nagpur,IN,DOMESTIC_INDIA,21.09,79.05
+BBI,Biju Patnaik International,Bhubaneswar,IN,DOMESTIC_INDIA,20.24,85.82
+RPR,Swami Vivekananda,Raipur,IN,DOMESTIC_INDIA,21.18,81.74
+IXR,Birsa Munda,Ranchi,IN,DOMESTIC_INDIA,23.31,85.32
+BHO,Raja Bhoj,Bhopal,IN,DOMESTIC_INDIA,23.29,77.34
+CJB,Coimbatore International,Coimbatore,IN,DOMESTIC_INDIA,11.03,77.04
+IXM,Madurai,Madurai,IN,DOMESTIC_INDIA,9.83,78.09
+TRZ,Tiruchirappalli International,Tiruchirappalli,IN,DOMESTIC_INDIA,10.77,78.71
+VTZ,Visakhapatnam,Visakhapatnam,IN,DOMESTIC_INDIA,17.72,83.22
+VGA,Vijayawada,Vijayawada,IN,DOMESTIC_INDIA,16.53,80.80
+TIR,Tirupati,Tirupati,IN,DOMESTIC_INDIA,13.63,79.54
+IXB,Bagdogra,Siliguri,IN,DOMESTIC_INDIA,26.68,88.33
+IMF,Imphal International,Imphal,IN,DOMESTIC_INDIA,24.76,93.90
+IXZ,Veer Savarkar International,Port Blair,IN,DOMESTIC_INDIA,11.64,92.73
+UDR,Maharana Pratap,Udaipur,IN,DOMESTIC_INDIA,24.62,73.90
+JDH,Jodhpur,Jodhpur,IN,DOMESTIC_INDIA,26.25,73.05
+BDQ,Vadodara,Vadodara,IN,DOMESTIC_INDIA,22.34,73.23
+STV,Surat,Surat,IN,DOMESTIC_INDIA,21.11,72.74
+DED,Jolly Grant,Dehradun,IN,DOMESTIC_INDIA,30.19,78.18
+IXJ,Jammu,Jammu,IN,DOMESTIC_INDIA,32.69,74.84
+DXB,Dubai International,Dubai,AE,INTERNATIONAL,25.25,55.36
+AUH,Zayed International,Abu Dhabi,AE,INTERNATIONAL,24.43,54.65
+SHJ,Sharjah International,Sharjah,AE,INTERNATIONAL,25.33,55.52
+DOH,Hamad International,Doha,QA,INTERNATIONAL,25.27,51.61
+BAH,Bahrain International,Manama,BH,INTERNATIONAL,26.27,50.63
+KWI,Kuwait International,Kuwait City,KW,INTERNATIONAL,29.23,47.97
+MCT,Muscat International,Muscat,OM,INTERNATIONAL,23.59,58.28
+JED,King Abdulaziz International,Jeddah,SA,INTERNATIONAL,21.68,39.16
+RUH,King Khalid International,Riyadh,SA,INTERNATIONAL,24.96,46.70
+SIN,Changi,Singapore,SG,INTERNATIONAL,1.36,103.99
+BKK,Suvarnabhumi,Bangkok,TH,INTERNATIONAL,13.69,100.75
+HKT,Phuket International,Phuket,TH,INTERNATIONAL,8.11,98.32
+KUL,Kuala Lumpur International,Kuala Lumpur,MY,INTERNATIONAL,2.75,101.71
+CGK,Soekarno-Hatta International,Jakarta,ID,INTERNATIONAL,-6.13,106.66
+DPS,Ngurah Rai International,Bali (Denpasar),ID,INTERNATIONAL,-8.75,115.17
+SGN,Tan Son Nhat International,Ho Chi Minh City,VN,INTERNATIONAL,10.82,106.65
+HAN,Noi Bai International,Hanoi,VN,INTERNATIONAL,21.22,105.81
+HKG,Hong Kong International,Hong Kong,HK,INTERNATIONAL,22.31,113.91
+NRT,Narita International,Tokyo,JP,INTERNATIONAL,35.77,140.39
+HND,Haneda,Tokyo,JP,INTERNATIONAL,35.55,139.78
+KIX,Kansai International,Osaka,JP,INTERNATIONAL,34.43,135.24
+ICN,Incheon International,Seoul,KR,INTERNATIONAL,37.46,126.44
+PVG,Shanghai Pudong International,Shanghai,CN,INTERNATIONAL,31.14,121.81
+CMB,Bandaranaike International,Colombo,LK,INTERNATIONAL,7.18,79.88
+MLE,Velana International,Male,MV,INTERNATIONAL,4.19,73.53
+KTM,Tribhuvan International,Kathmandu,NP,INTERNATIONAL,27.70,85.36
+DAC,Hazrat Shahjalal International,Dhaka,BD,INTERNATIONAL,23.84,90.40
+MRU,Sir Seewoosagur Ramgoolam International,Mauritius,MU,INTERNATIONAL,-20.43,57.68
+LHR,Heathrow,London,GB,INTERNATIONAL,51.47,-0.45
+CDG,Charles de Gaulle,Paris,FR,INTERNATIONAL,49.01,2.55
+FRA,Frankfurt,Frankfurt,DE,INTERNATIONAL,50.04,8.56
+MUC,Munich,Munich,DE,INTERNATIONAL,48.35,11.79
+AMS,Schiphol,Amsterdam,NL,INTERNATIONAL,52.31,4.76
+ZRH,Zurich,Zurich,CH,INTERNATIONAL,47.46,8.55
+FCO,Leonardo da Vinci-Fiumicino,Rome,IT,INTERNATIONAL,41.80,12.25
+MXP,Malpensa,Milan,IT,INTERNATIONAL,45.63,8.72
+MAD,Adolfo Suarez Madrid-Barajas,Madrid,ES,INTERNATIONAL,40.49,-3.57
+IST,Istanbul,Istanbul,TR,INTERNATIONAL,41.26,28.74
+JFK,John F. Kennedy International,New York,US,INTERNATIONAL,40.64,-73.78
+EWR,Newark Liberty International,Newark / New York,US,INTERNATIONAL,40.69,-74.17
+ORD,O'Hare International,Chicago,US,INTERNATIONAL,41.98,-87.90
+SFO,San Francisco International,San Francisco,US,INTERNATIONAL,37.62,-122.38
+LAX,Los Angeles International,Los Angeles,US,INTERNATIONAL,33.94,-118.41
+YYZ,Toronto Pearson International,Toronto,CA,INTERNATIONAL,43.68,-79.63
+SYD,Kingsford Smith,Sydney,AU,INTERNATIONAL,-33.95,151.18
+MEL,Melbourne,Melbourne,AU,INTERNATIONAL,-37.67,144.84
+NBO,Jomo Kenyatta International,Nairobi,KE,INTERNATIONAL,-1.32,36.93
+JNB,O. R. Tambo International,Johannesburg,ZA,INTERNATIONAL,-26.14,28.25
+CPT,Cape Town International,Cape Town,ZA,INTERNATIONAL,-33.97,18.60
+ADD,Bole International,Addis Ababa,ET,INTERNATIONAL,8.98,38.80
+SEZ,Seychelles International,Mahe,SC,INTERNATIONAL,-4.67,55.52

@@ -1,0 +1,98 @@
+from_currency_id,to_program_id,points_in,points_out,ratio_text,min_transfer,cap,transfer_time,ratio_scope,source_tier,source_url,as_of
+HDFC_RP,KRISFLYER,1,1,1:1 (Infinia/Diners Black) or 2:1 (Regalia Gold/Regalia/Diners Privilege),"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,PROGRAMME,https://www.singaporeair.com/en_UK/us/ppsclub-krisflyer/earn-miles/earn-on-the-ground/financial-services-partners/,2026-07-16
+HDFC_RP,FLYING_BLUE,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,PROGRAMME,https://www.flyingblue.com/en/earn/partners/hdfc-bank,2026-07-16
+HDFC_RP,AIR_INDIA_MAHARAJA,2,1,"2:1 (Infinia/Diners Black, min 200) or 3:1 (Regalia Gold, min 300)",200-300,,2-4 days (HDFC ~4 days),VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/hdfc-bank-credit-cards.html,2026-07-16
+HDFC_RP,ACCOR_ALL,2,1,2:1,"Multiples of 1,000 pts",,Instant-72h,EXACT_FOR_ALL_CARDS,PROGRAMME,https://all.accor.com/loyalty-program/partners/conditions/hdfc/index.en.shtml,2026-07-16
+HDFC_RP,ASIA_MILES,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,PROGRAMME,https://www.cathaypacific.com/cx/en_IN/our-partners/hdfc-bank.html,2026-07-16
+HDFC_RP,QATAR_PRIVILEGE_CLUB,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,PROGRAMME,https://www.qatarairways.com/en-in/Privilege-Club/partner-detail/banks-and-credit-cards/hdfc.html,2026-07-16
+HDFC_RP,CLUB_ITC,2,1,2:1,Min 200 RP (100 Green Points),,2-4 working days,EXACT_FOR_ALL_CARDS,PROGRAMME,https://www.itchotels.com/in/en/clubitc/partners/hdfc-bank,2026-09-05
+HDFC_RP,BA_EXECUTIVE_CLUB,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,MARRIOTT_BONVOY,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,VIETNAM_LOTUSMILES,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,FINNAIR_PLUS,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,AEROPLAN,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,LIFEMILES,2,1,2:1,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,UNITED_MILEAGEPLUS,2,1,2:1,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,TURKISH_MILES_SMILES,2,1,2:1,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,ETIHAD_GUEST,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,THAI_ROYAL_ORCHID,2,1,2:1 / 3:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,SPICEJET_SPICECLUB,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,AIRASIA_REWARDS,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,WYNDHAM_REWARDS,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,IHG_ONE_REWARDS,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HDFC_RP,RADISSON_REWARDS,1,1,1:1 / 2:1 per card,"Multiples of 1,000 pts",,Instant-72h,VARIES_BY_CARD,UNVERIFIED,,2026-07-16
+HSBC_RP,KRISFLYER,1,1,1:1 (Premier/TravelOne) / 2:1 other cards,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,FLYING_BLUE,1,1,1:1 (Premier/TravelOne) / 2:1 other cards,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,AIR_INDIA_MAHARAJA,1,1,"1:1 (Premier/TravelOne, min 1) / 2:1 (Visa Platinum, Classic, Gold)",1-100,No cap,Up to 5 working days,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,ACCOR_ALL,1,1,1:1 (Premier/TravelOne) / 2:1 others,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,QATAR_PRIVILEGE_CLUB,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,BA_EXECUTIVE_CLUB,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,VIETNAM_LOTUSMILES,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,MARRIOTT_BONVOY,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,ETIHAD_GUEST,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,UNITED_MILEAGEPLUS,2,1,2:1 / 3:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,QANTAS_FREQUENT_FLYER,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,THAI_ROYAL_ORCHID,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,JAL_MILEAGE_BANK,1,1,1:1 / 2:1 per card,No minimum,No cap,Up to 10 working days,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,EVA_INFINITY,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,TURKISH_MILES_SMILES,2,1,2:1 / 4:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,HAINAN_FORTUNE_WINGS,2,1,2:1 / 4:1 per card,No minimum,No cap,Up to 5 working days,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,IHG_ONE_REWARDS,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,WYNDHAM_REWARDS,1,1,1:1 / 2:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,SHANGRI_LA_CIRCLE,5,1,5:1 / 10:1 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+HSBC_RP,AIRASIA_REWARDS,1,3,1:3 / 1:2 per card,No minimum,No cap,Instant-1 working day,VARIES_BY_CARD,ISSUER,https://www.hsbc.co.in/credit-cards/products/premier/rewards/,2026-07-17
+AMEX_MR,MARRIOTT_BONVOY,1,1,1:1 (100 MR -> 100 pts),"Multiples of 1,000 pts",,Instant-24h,EXACT_FOR_ALL_CARDS,UNVERIFIED,,2026-08-18
+AMEX_MR,KRISFLYER,2,1,2:1 (800 MR -> 400 miles),"Multiples of 1,000 pts",,Instant-24h,EXACT_FOR_ALL_CARDS,UNVERIFIED,https://magnify.club/guides/amex-india-transfer-partners/,2026-08-18
+AMEX_MR,BA_EXECUTIVE_CLUB,2,1,"2:1 (1,200 MR -> 600 Avios)","Multiples of 1,000 pts",,Instant-24h,EXACT_FOR_ALL_CARDS,UNVERIFIED,https://magnify.club/guides/amex-india-transfer-partners/,2026-08-18
+AMEX_MR,QATAR_PRIVILEGE_CLUB,2,1,2:1 (500 MR -> 250 Avios),"Multiples of 1,000 pts",,Instant-24h,EXACT_FOR_ALL_CARDS,UNVERIFIED,https://magnify.club/guides/amex-india-transfer-partners/,2026-08-18
+AMEX_MR,ASIA_MILES,2,1,2:1 (800 MR -> 400 miles),"Multiples of 1,000 pts",,Instant-24h,EXACT_FOR_ALL_CARDS,UNVERIFIED,https://magnify.club/guides/amex-india-transfer-partners/,2026-08-18
+AMEX_MR,VIRGIN_ATLANTIC,5,4,5:4 (800 MR -> 640 pts),Min 800 MR then multiples of 400,,Instant (up to 48h),EXACT_FOR_ALL_CARDS,ISSUER,https://www.americanexpress.com/content/dam/amex/in/benefits/VirginHilton_Aug26.pdf,2026-08-18
+AMEX_MR,HILTON_HONORS,2,3,"2:3 (1,000 MR -> 1,500 pts)","Min 1,000 MR per transaction",,Instant (up to 7 days),EXACT_FOR_ALL_CARDS,ISSUER,https://www.americanexpress.com/content/dam/amex/in/benefits/VirginHilton_Aug26.pdf,2026-08-18
+INDUSIND_RP,KRISFLYER,1,1,1:1 to 4:1 depending on card,Min 500 pts (multiples of 100),,Up to 15 working days,VARIES_BY_CARD,PROGRAMME,https://www.singaporeair.com/en_UK/in/plan-travel/local-promotions/krisflyer-partners/,2026-08-06
+INDUSIND_RP,AIR_INDIA_MAHARAJA,1,1,1:1 to 4:1 depending on card,Min 500 pts (multiples of 100),"25,000 RP per calendar month",2-4 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/indusind-bank-credit-cards.html,2026-07-17
+INDUSIND_RP,CLUB_ITC,1,1,1:1,Min 500 pts,,10-12 working days,EXACT_FOR_ALL_CARDS,PROGRAMME,https://www.itchotels.com/in/en/clubitc/partners/indusInd-bank,2026-07-17
+ICICI_RP,AIR_INDIA_MAHARAJA,1,1,"1:1 (Emeralde Private Metal, Times Black) up to 6:1 other cards","Min 1 (premium) / 2,000 (others)",,Up to 5 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/icici.html,2026-07-17
+YES_RP,AIR_INDIA_MAHARAJA,8,1,8:1 to 10:1 depending on card,No minimum,,Up to 7 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/yes-bank-credit-cards.html,2026-07-17
+RBL_RP,AIR_INDIA_MAHARAJA,1,1,1:1 / 2:1 per card,No minimum published,,Up to 7 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/rbl-bank.html,2026-07-17
+RBL_RP,KRISFLYER,2,1,2:1 (stated on Nova card page),No minimum published,,Up to 7 working days,VARIES_BY_CARD,ISSUER,https://www.rbl.bank.in/personal-banking/cards/credit-cards/nova-credit-card,2026-07-17
+RBL_RP,QATAR_PRIVILEGE_CLUB,2,1,2:1 (stated on Nova card page),No minimum published,,Up to 7 working days,VARIES_BY_CARD,ISSUER,https://www.rbl.bank.in/personal-banking/cards/credit-cards/nova-credit-card,2026-07-17
+RBL_RP,CLUB_ITC,1,1,1:1 / 2:1 per card,No minimum on Nova/Lumiere,,Up to 7 working days,VARIES_BY_CARD,PROGRAMME,https://www.itchotels.com/in/en/clubitc/partners/rbl-bank,2026-07-17
+FEDERAL_RP,AIR_INDIA_MAHARAJA,6,1,6:1 / 7:1 per card,No minimum published,,Up to 7 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/federal-bank.html,2026-07-17
+FEDERAL_RP,KRISFLYER,7,1,7:1 to 13:1 per card,No minimum published,,7-15 working days,VARIES_BY_CARD,PROGRAMME,https://www.singaporeair.com/en_UK/in/ppsclub-krisflyer/earn-miles/earn-on-the-ground/financial-services-partners/,2026-07-17
+KOTAK_AIR_MILES,AIR_INDIA_MAHARAJA,1,1,1:1 to 3:1 per card,"Min 1,000 miles (2,000 Solitaire)","Kotak Air: 1,00,000 miles/yr",Up to 7 working days,VARIES_BY_CARD,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,ACCOR_ALL,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,QATAR_PRIVILEGE_CLUB,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,BA_EXECUTIVE_CLUB,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,ASIA_MILES,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,FLYING_BLUE,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,UNITED_MILEAGEPLUS,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,ETIHAD_GUEST,2,1,2:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+KOTAK_AIR_MILES,AEROPLAN,2,1,2:1,"Min 1,000 miles",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://images.kotak.bank.in/bank/mailers/2026/files/Air%20Miles%20Transfer%20Ratio_Kotak%20Air+%20Prime%20Credit%20Card%20clean%20copy.pdf,2026-07-17
+KOTAK_AIR_MILES,MARRIOTT_BONVOY,3,1,3:1,"Min 1,000 miles (2,000 Solitaire)",,Up to 7 working days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.kotak.bank.in/content/dam/Kotak/gsfcfiles/credit-cards/miles-transfer-ratio-01092025.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,AIR_INDIA_MAHARAJA,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.airindia.com/in/en/maharaja-club/partner-offers/sbi-miles-travel-card.html,2026-07-17
+SBI_TRAVEL_CREDITS,AEROPLAN,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,BA_EXECUTIVE_CLUB,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,ASIA_MILES,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,QANTAS_FREQUENT_FLYER,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,THAI_ROYAL_ORCHID,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,VIETNAM_LOTUSMILES,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,SPICEJET_SPICECLUB,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,AIRASIA_REWARDS,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,FLYING_BLUE,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,EMIRATES_SKYWARDS,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,ETHIOPIAN_SHEBAMILES,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,JAL_MILEAGE_BANK,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,SAUDIA_ALFURSAN,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,TURKISH_MILES_SMILES,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,UNITED_MILEAGEPLUS,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,IHG_ONE_REWARDS,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,WYNDHAM_REWARDS,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,RADISSON_REWARDS,1,1,1:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,ACCOR_ALL,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,CLUB_ITC,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,SHANGRI_LA_CIRCLE,6,1,6:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_TRAVEL_CREDITS,JUMEIRAH_ONE,2,1,2:1,No minimum published,,Up to 21 days,EXACT_FOR_ALL_CARDS,ISSUER,https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/rewards-program-TnC-miles.pdf,2026-07-17
+SBI_RP,AIR_INDIA_MAHARAJA,5,1,5:1 (SBI Aurum),"Min 500 (Aurum), 5,000 others",,2-7 working days,VARIES_BY_CARD,PROGRAMME,https://www.airindia.com/in/en/maharaja-club/partner-offers/sbi.html,2026-07-17
+SBI_RP,QATAR_PRIVILEGE_CLUB,5,1,5:1 (SBI Aurum),Min 500,,2-7 working days,VARIES_BY_CARD,PROGRAMME,https://www.qatarairways.com/en/Privilege-Club/partner-detail/banks-and-credit-cards/sbic-aurum.html,2026-07-17
+SBI_RP,CLUB_ITC,5,1,5:1 (SBI Aurum),Min 500,,2-7 working days,VARIES_BY_CARD,PROGRAMME,https://rewards.aurumcreditcard.com/points-transfer,2026-07-17
+SBI_RP,AIRASIA_REWARDS,4,1,4:1 (SBI Aurum),Min 500,,2-7 working days,VARIES_BY_CARD,PROGRAMME,https://rewards.aurumcreditcard.com/points-transfer,2026-07-17
