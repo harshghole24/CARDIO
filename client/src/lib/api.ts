@@ -82,6 +82,48 @@ export const api = {
     method: 'POST',
     body: JSON.stringify(data)
   }),
+  deleteTravelGoal: (id: string) => fetchWithRetry(`${API_URL}/travel-goals/${id}`, {
+    method: 'DELETE'
+  }),
+  getAnalyticsSummary: (transactions: any[]) => fetchWithRetry(`${API_URL}/analytics/summary`, {
+    method: 'POST',
+    body: JSON.stringify({ transactions })
+  }),
+  getBrandRegistrations: () => fetchWithRetry(`${API_URL}/brand-registrations`),
+  addBrandRegistration: (data: any) => fetchWithRetry(`${API_URL}/brand-registrations`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }),
+  updateBrandRegistration: (id: string, data: any) => fetchWithRetry(`${API_URL}/brand-registrations/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data)
+  }),
+  evaluateOffer: (data: { merchant: string; amount: number; category?: string; user_card_id?: string }) => fetchWithRetry(`${API_URL}/offers/evaluate`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }),
+  deleteBrandRegistration: (id: string) => fetchWithRetry(`${API_URL}/brand-registrations/${id}`, {
+    method: 'DELETE'
+  }),
+  getOfferRedemptions: (params?: { status?: string; offer_id?: string; transaction_id?: string }) => {
+    const searchParams = new URLSearchParams();
+    if (params?.status) searchParams.set('status', params.status);
+    if (params?.offer_id) searchParams.set('offer_id', params.offer_id);
+    if (params?.transaction_id) searchParams.set('transaction_id', params.transaction_id);
+    const qs = searchParams.toString();
+    return fetchWithRetry(`${API_URL}/offer-redemptions${qs ? `?${qs}` : ''}`);
+  },
+  createOfferRedemption: (data: any) => fetchWithRetry(`${API_URL}/offer-redemptions`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }),
+  updateOfferRedemption: (id: string, data: any) => fetchWithRetry(`${API_URL}/offer-redemptions/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(data)
+  }),
+  deleteOfferRedemption: (id: string) => fetchWithRetry(`${API_URL}/offer-redemptions/${id}`, {
+    method: 'DELETE'
+  }),
   getRecommendation: (amount: number, category: string) => fetchWithRetry(`${API_URL}/recommendations`, {
     method: 'POST',
     body: JSON.stringify({ amount, category })

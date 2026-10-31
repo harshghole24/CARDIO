@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, Wifi } from 'lucide-react';
 
@@ -7,7 +7,7 @@ interface AnimatedAuthCardProps {
   isFlipped: boolean;
 }
 
-export const AnimatedAuthCard: React.FC<AnimatedAuthCardProps> = ({ name, isFlipped }) => {
+export const AnimatedAuthCard: FC<AnimatedAuthCardProps> = ({ name, isFlipped }) => {
   return (
     <div className="relative w-[340px] h-[214px] perspective-[1000px] group">
       <motion.div

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, ArrowRight, Plane } from 'lucide-react';
 

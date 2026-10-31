@@ -1,18 +1,31 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Plus, Search, X, Building2, CreditCard, Pencil, Trash2, Download, ArrowUpRight } from 'lucide-react';
+import {
+  Plus, Search, X, Building2, CreditCard, Pencil, Trash2, Download,
+  ArrowUpRight, Sparkles, ChevronDown, ChevronUp, AlertCircle, ExternalLink,
+  ShieldCheck, CheckCircle2, Info, BookmarkCheck
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../lib/api';
 import { useDataStore } from '../lib/data/DataContext';
 import { useNavigate } from 'react-router-dom';
+import type { OfferRedemptionRow } from '../lib/data/schemas';
+import {
+  evaluateTransactionOffers,
+  calculateBaseBenefit,
+  type OfferEngineReport,
+} from '../lib/engine/offerEngine';
 
 interface Transaction {
   id: string;
   date: string;
   merchant: string;
   amount: number;
+  category_id?: string;
   reward_earned: number;
   cashback_earned: number;
   user_cards?: {
+    id?: string;
+    card_id?: string;
     credit_cards?: { card_name?: string; name?: string };
     custom_card_name?: string;
   };
@@ -46,15 +59,22 @@ const ConnectBankModal = ({ onClose }: { onClose: () => void }) => (
   </div>
 );
 
-const Transactions = ({ session }: { session: any }) => {
+const Transactions = ({ session: _session }: { session?: any }) => {
   const { store } = useDataStore();
   const navigate = useNavigate();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [cards, setCards] = useState<any[]>([]);
+  const [brandRegistrations, setBrandRegistrations] = useState<any[]>([]);
+  const [redemptions, setRedemptions] = useState<OfferRedemptionRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showBankModal, setShowBankModal] = useState(false);
   const [editTxn, setEditTxn] = useState<Transaction | null>(null);
+
+  // Accordion toggles for smart recommendation modal
+  const [showCardComparison, setShowCardComparison] = useState(false);
+  const [showIneligibleCards, setShowIneligibleCards] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   // Form State
   const [merchant, setMerchant] = useState('');
@@ -62,6 +82,9 @@ const Transactions = ({ session }: { session: any }) => {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [category, setCategory] = useState('Travel');
   const [userCardId, setUserCardId] = useState('');
+  const [recordRedemption, setRecordRedemption] = useState(true);
+  const [redemptionStatus, setRedemptionStatus] = useState<'APPLIED' | 'PENDING_CASHBACK'>('APPLIED');
+  const [redemptionNotes, setRedemptionNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
 
@@ -70,7 +93,12 @@ const Transactions = ({ session }: { session: any }) => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [txns, userCards] = await Promise.all([api.getTransactions(), api.getCards()]);
+      const [txns, userCards, userRegistrations, userRedemptions] = await Promise.all([
+        api.getTransactions(),
+        api.getCards(),
+        api.getBrandRegistrations().catch(() => []),
+        api.getOfferRedemptions().catch(() => []),
+      ]);
       
       const enrichedCards = (userCards || []).map((c: any) => ({
         ...c,
@@ -86,6 +114,8 @@ const Transactions = ({ session }: { session: any }) => {
 
       setTransactions(enrichedTxns);
       setCards(enrichedCards);
+      setBrandRegistrations(userRegistrations || []);
+      setRedemptions(userRedemptions || []);
       if (enrichedCards.length > 0) setUserCardId(enrichedCards[0].id);
     } catch (err) {
       console.error(err);
@@ -103,7 +133,13 @@ const Transactions = ({ session }: { session: any }) => {
     setDate(new Date().toISOString().split('T')[0]);
     setCategory('Travel');
     setUserCardId(cards[0]?.id || '');
+    setRecordRedemption(true);
+    setRedemptionStatus('APPLIED');
+    setRedemptionNotes('');
     setFormError('');
+    setShowCardComparison(false);
+    setShowIneligibleCards(false);
+    setShowTerms(false);
     setIsAddModalOpen(true);
   };
 
@@ -112,10 +148,35 @@ const Transactions = ({ session }: { session: any }) => {
     setMerchant(txn.merchant);
     setAmount(String(txn.amount));
     setDate(txn.date?.split('T')[0] || '');
-    setCategory('Travel');
+    setCategory(txn.category_id || 'Travel');
+    const linked = redemptions.find(r => r.transaction_id === txn.id);
+    setRecordRedemption(!!linked);
+    setRedemptionStatus(linked?.status === 'PENDING_CASHBACK' ? 'PENDING_CASHBACK' : 'APPLIED');
+    setRedemptionNotes(linked?.notes || '');
     setFormError('');
+    setShowCardComparison(false);
+    setShowIneligibleCards(false);
+    setShowTerms(false);
     setIsAddModalOpen(true);
   };
+
+  // Live Intelligent Offer Recommendation Engine
+  const offerReport = useMemo<OfferEngineReport | null>(() => {
+    if (!store || !merchant.trim() || !amount || isNaN(Number(amount)) || Number(amount) <= 0 || cards.length === 0) {
+      return null;
+    }
+    return evaluateTransactionOffers({
+      merchant,
+      amount: Number(amount),
+      category,
+      transactionDate: date,
+      userCards: cards,
+      availableOffers: store.offers || [],
+      cardCatalogue: store.cardById,
+      brandRegistrations,
+      selectedUserCardId: editTxn ? (editTxn.user_cards?.id || userCardId) : userCardId,
+    });
+  }, [store, merchant, amount, category, date, cards, brandRegistrations, userCardId, editTxn]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,17 +186,97 @@ const Transactions = ({ session }: { session: any }) => {
     }
     setIsSubmitting(true);
     setFormError('');
+
+    const numAmount = Number(amount);
+    let rewardEarned = 0;
+    let cashbackEarned = 0;
+
+    if (offerReport?.selectedCardEvaluation) {
+      rewardEarned = offerReport.selectedCardEvaluation.benefit.rewardPoints;
+      cashbackEarned = offerReport.selectedCardEvaluation.benefit.cashback;
+    } else {
+      const targetCardId = editTxn ? (editTxn.user_cards?.id || userCardId) : userCardId;
+      const selectedCard = cards.find(c => c.id === targetCardId);
+      if (selectedCard && store) {
+        const dbCard = store.cardById.get(selectedCard.card_id);
+        if (dbCard) {
+          const base = calculateBaseBenefit(numAmount, dbCard);
+          rewardEarned = base.rewardPoints;
+          cashbackEarned = base.cashback;
+        }
+      }
+    }
+
     try {
       if (editTxn) {
         const updated = await api.updateTransaction(editTxn.id, {
-          merchant, amount: Number(amount), date, category_id: null,
+          merchant,
+          amount: numAmount,
+          date,
+          category_id: category,
+          reward_earned: rewardEarned,
+          cashback_earned: cashbackEarned,
         });
         setTransactions(prev => prev.map(t => t.id === editTxn.id ? { ...t, ...updated } : t));
+
+        // Update linked redemption if present
+        const linkedRedemption = redemptions.find(r => r.transaction_id === editTxn.id);
+        if (linkedRedemption?.id) {
+          try {
+            const updatedRedemption = await api.updateOfferRedemption(linkedRedemption.id, {
+              transaction_amount: numAmount,
+              merchant_name: merchant.trim(),
+              notes: redemptionNotes || linkedRedemption.notes,
+            });
+            if (updatedRedemption) {
+              setRedemptions(prev => prev.map(r => r.id === updatedRedemption.id ? updatedRedemption : r));
+            }
+          } catch (rErr) {
+            console.error('Failed to sync redemption amount:', rErr);
+          }
+        }
       } else {
         const newTxn = await api.addTransaction({
-          user_card_id: userCardId, merchant, amount: Number(amount), date, category_id: null,
+          user_card_id: userCardId,
+          merchant,
+          amount: numAmount,
+          date,
+          category_id: category,
+          reward_earned: rewardEarned,
+          cashback_earned: cashbackEarned,
         });
         setTransactions(prev => [{ ...newTxn, user_cards: cards.find(c => c.id === userCardId) }, ...prev]);
+
+        // Record offer redemption if eligible offer was matched and checked
+        if (recordRedemption && offerReport?.selectedCardEvaluation?.matchedOffer) {
+          const matchedOffer = offerReport.selectedCardEvaluation.matchedOffer;
+          const b = offerReport.selectedCardEvaluation.benefit;
+          const selectedCard = cards.find(c => c.id === userCardId);
+          try {
+            const createdRedemption = await api.createOfferRedemption({
+              offer_id: matchedOffer.offer_id,
+              transaction_id: newTxn.id,
+              user_card_id: userCardId,
+              card_id: selectedCard?.card_id || null,
+              merchant_name: merchant.trim(),
+              transaction_amount: numAmount,
+              status: redemptionStatus,
+              estimated_discount: b.instantDiscount || 0,
+              confirmed_discount: b.instantDiscount > 0 && redemptionStatus === 'APPLIED' ? b.instantDiscount : 0,
+              estimated_cashback: b.cashback || 0,
+              confirmed_cashback: 0,
+              estimated_reward_points: b.rewardPoints || 0,
+              confirmed_reward_points: 0,
+              cashback_status: b.cashback > 0 ? 'PENDING' : 'NOT_APPLICABLE',
+              notes: redemptionNotes || `Auto-recorded via transaction matching engine on ${merchant.trim()}`,
+            });
+            if (createdRedemption) {
+              setRedemptions(prev => [createdRedemption, ...prev]);
+            }
+          } catch (redemptionErr) {
+            console.error('Failed to link redemption:', redemptionErr);
+          }
+        }
       }
       setIsAddModalOpen(false);
       setEditTxn(null);
@@ -149,11 +290,14 @@ const Transactions = ({ session }: { session: any }) => {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Delete this transaction?')) return;
     const prev = [...transactions];
+    const prevRedemptions = [...redemptions];
     setTransactions(t => t.filter(tx => tx.id !== id));
+    setRedemptions(r => r.map(red => red.transaction_id === id ? { ...red, transaction_id: null, status: 'NOT_REDEEMED' } : red));
     try {
       await api.deleteTransaction(id);
     } catch {
       setTransactions(prev);
+      setRedemptions(prevRedemptions);
       alert('Failed to delete transaction.');
     }
   };
@@ -181,21 +325,6 @@ const Transactions = ({ session }: { session: any }) => {
   const filtered = useMemo(() =>
     transactions.filter(t => t.merchant?.toLowerCase().includes(searchQuery.toLowerCase())),
     [transactions, searchQuery]);
-
-  // Best card hint for current add form
-  const bestCardHint = useMemo(() => {
-    if (!store || !amount || isNaN(Number(amount)) || Number(amount) <= 0 || cards.length === 0) return null;
-    const amt = Number(amount);
-    let best: any = null;
-    let bestPts = -1;
-    for (const uc of cards) {
-      const dbCard = store.cardById.get(uc.card_id);
-      if (!dbCard) continue;
-      const pts = Math.floor((amt / 100) * dbCard.base_points_per_100_inr_derived);
-      if (pts > bestPts) { bestPts = pts; best = { uc, dbCard, pts }; }
-    }
-    return best;
-  }, [store, amount, cards]);
 
   return (
     <div className="p-8 max-w-7xl mx-auto min-h-screen relative">
@@ -289,7 +418,37 @@ const Transactions = ({ session }: { session: any }) => {
                     <td className="py-4 px-6 text-text-muted whitespace-nowrap font-medium text-sm">
                       {new Date(txn.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' })}
                     </td>
-                    <td className="py-4 px-6 font-bold text-text-primary">{txn.merchant}</td>
+                    <td className="py-4 px-6 font-bold text-text-primary">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span>{txn.merchant}</span>
+                        {txn.category_id && (
+                          <span className="text-[10px] font-bold text-pastel-lavender bg-pastel-lavender/10 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                            {txn.category_id}
+                          </span>
+                        )}
+                        {(() => {
+                          const linked = redemptions.find(r => r.transaction_id === txn.id);
+                          if (!linked) return null;
+                          const isRedeemed = linked.status === 'REDEEMED';
+                          const isPending = linked.status === 'PENDING_CASHBACK';
+                          return (
+                            <span
+                              className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                                isRedeemed
+                                  ? 'bg-pastel-mint/15 text-pastel-mint border border-pastel-mint/30'
+                                  : isPending
+                                  ? 'bg-pastel-peach/15 text-pastel-peach border border-pastel-peach/30'
+                                  : 'bg-pastel-lavender/15 text-pastel-lavender border border-pastel-lavender/30'
+                              }`}
+                              title={`Offer: ${linked.offer_id} (${linked.status})`}
+                            >
+                              <BookmarkCheck className="w-3 h-3" />
+                              {isRedeemed ? 'Redeemed' : isPending ? 'Cashback Pending' : 'Offer Applied'}
+                            </span>
+                          );
+                        })()}
+                      </div>
+                    </td>
                     <td className="py-4 px-6 text-text-muted font-medium text-sm">
                       {txn.user_cards?.credit_cards?.card_name || txn.user_cards?.credit_cards?.name || txn.user_cards?.custom_card_name || 'Unknown Card'}
                     </td>
@@ -325,85 +484,526 @@ const Transactions = ({ session }: { session: any }) => {
         {isAddModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsAddModalOpen(false)} className="absolute inset-0 bg-dark-base/80 backdrop-blur-sm" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="glass-card w-full max-w-lg relative z-10 overflow-hidden border border-white/10 rounded-3xl"
-            >
-              <div className="p-6 border-b border-white/5 flex justify-between items-center bg-dark-surface/50">
-                <h2 className="text-2xl font-display font-bold text-text-primary">{editTxn ? 'Edit Transaction' : 'Add Transaction'}</h2>
-                <button onClick={() => setIsAddModalOpen(false)} className="p-2 hover:bg-white/5 rounded-full transition-colors">
-                  <X className="w-5 h-5 text-text-muted" />
-                </button>
-              </div>
-
-              <form onSubmit={handleSubmit} className="p-6 space-y-5">
-                {formError && (
-                  <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm font-medium">{formError}</div>
-                )}
-
-                <div>
-                  <label className="block text-sm font-bold text-text-muted mb-1">Amount (₹)</label>
-                  <input type="number" required value={amount} onChange={e => setAmount(e.target.value)} className="glass-input" placeholder="5000" min="1" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-text-muted mb-1">Merchant</label>
-                  <input type="text" required value={merchant} onChange={e => setMerchant(e.target.value)} className="glass-input" placeholder="MakeMyTrip" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-text-muted mb-1">Category</label>
-                  <select value={category} onChange={e => setCategory(e.target.value)} className="glass-input">
-                    {CATEGORIES.map(c => <option key={c}>{c}</option>)}
-                  </select>
-                </div>
-
-                {!editTxn && (
-                  <div>
-                    <label className="block text-sm font-bold text-text-muted mb-1">Card Used</label>
-                    {cards.length === 0 ? (
-                      <p className="text-text-muted text-sm p-3 bg-dark-elevated rounded-xl">
-                        No cards added yet. <button type="button" onClick={() => { setIsAddModalOpen(false); navigate('/cards'); }} className="text-pastel-lavender underline">Add a card first →</button>
-                      </p>
-                    ) : (
-                      <select required value={userCardId} onChange={e => setUserCardId(e.target.value)} className="glass-input">
-                        {cards.map(c => (
-                          <option key={c.id} value={c.id}>
-                            {c.credit_cards?.card_name || c.credit_cards?.name || c.custom_card_name} ••{c.last_four_digits}
-                          </option>
-                        ))}
-                      </select>
-                    )}
+              {/* Modal Container */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="glass-card w-full max-w-2xl max-h-[92vh] flex flex-col relative z-10 overflow-hidden border border-white/10 rounded-3xl"
+              >
+                <div className="p-6 border-b border-white/5 flex justify-between items-center bg-dark-surface/50 shrink-0">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-pastel-lavender/10 border border-pastel-lavender/30 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-pastel-lavender" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-display font-bold text-text-primary">
+                        {editTxn ? 'Edit Transaction' : 'Smart Transaction Entry'}
+                      </h2>
+                      <p className="text-xs text-text-muted">Intelligent offer matching & reward optimization</p>
+                    </div>
                   </div>
-                )}
-
-                {/* Best Card Hint */}
-                {!editTxn && bestCardHint && userCardId !== bestCardHint.uc.id && (
-                  <div className="bg-pastel-mint/10 border border-pastel-mint/20 p-3 rounded-xl text-sm">
-                    <span className="text-pastel-mint font-bold">💡 Best card for this:</span>
-                    <span className="text-text-muted ml-2">
-                      {bestCardHint.dbCard.name} earns {bestCardHint.pts} pts for this spend.
-                    </span>
-                    <button type="button" onClick={() => setUserCardId(bestCardHint.uc.id)} className="ml-2 text-pastel-lavender underline font-bold">
-                      Switch →
-                    </button>
-                  </div>
-                )}
-
-                <div>
-                  <label className="block text-sm font-bold text-text-muted mb-1">Date</label>
-                  <input type="date" required value={date} onChange={e => setDate(e.target.value)} className="glass-input [color-scheme:dark]" />
-                </div>
-
-                <div className="pt-2">
-                  <button type="submit" disabled={isSubmitting || (cards.length === 0 && !editTxn)} className="pastel-button w-full py-4 disabled:opacity-50">
-                    {isSubmitting ? 'Saving...' : editTxn ? 'Save Changes' : 'Add Transaction'}
+                  <button onClick={() => setIsAddModalOpen(false)} className="p-2 hover:bg-white/5 rounded-full transition-colors">
+                    <X className="w-5 h-5 text-text-muted" />
                   </button>
                 </div>
-              </form>
-            </motion.div>
+
+                <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-5">
+                  {formError && (
+                    <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm font-medium flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{formError}</span>
+                    </div>
+                  )}
+
+                  {/* Inputs Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                        Amount (₹) *
+                      </label>
+                      <input
+                        type="number"
+                        required
+                        value={amount}
+                        onChange={e => setAmount(e.target.value)}
+                        className="glass-input text-lg font-bold"
+                        placeholder="5000"
+                        min="1"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                        Merchant *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={merchant}
+                        onChange={e => setMerchant(e.target.value)}
+                        className="glass-input"
+                        placeholder="e.g. Amazon, Swiggy, Flipkart, Zomato"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                        Category
+                      </label>
+                      <select value={category} onChange={e => setCategory(e.target.value)} className="glass-input">
+                        {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                        Date
+                      </label>
+                      <input
+                        type="date"
+                        required
+                        value={date}
+                        onChange={e => setDate(e.target.value)}
+                        className="glass-input [color-scheme:dark]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Card Selector */}
+                  {!editTxn && (
+                    <div>
+                      <label className="block text-xs font-bold text-text-muted uppercase tracking-wider mb-1.5">
+                        Payment Card
+                      </label>
+                      {cards.length === 0 ? (
+                        <p className="text-text-muted text-sm p-3 bg-dark-elevated rounded-xl">
+                          No cards added yet.{' '}
+                          <button
+                            type="button"
+                            onClick={() => { setIsAddModalOpen(false); navigate('/cards'); }}
+                            className="text-pastel-lavender underline font-bold"
+                          >
+                            Add a card first →
+                          </button>
+                        </p>
+                      ) : (
+                        <select
+                          required
+                          value={userCardId}
+                          onChange={e => setUserCardId(e.target.value)}
+                          className="glass-input font-medium"
+                        >
+                          {cards.map(c => (
+                            <option key={c.id} value={c.id}>
+                              {c.credit_cards?.card_name || c.credit_cards?.name || c.custom_card_name} ••{c.last_four_digits} ({c.credit_cards?.issuer || 'Card'})
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ────────────────── INTELLIGENT MATCHING ENGINE INSIGHTS ────────────────── */}
+                  {offerReport && (
+                    <div className="space-y-4 pt-1">
+                      {/* 1. Recommended Card Banner */}
+                      {offerReport.recommendedCard && (
+                        <div className="p-4 rounded-2xl bg-gradient-to-r from-pastel-mint/15 via-pastel-lavender/10 to-pastel-mint/10 border border-pastel-mint/40 relative overflow-hidden">
+                          <div className="flex items-center justify-between gap-2 mb-1.5">
+                            <div className="flex items-center gap-2">
+                              <Sparkles className="w-4 h-4 text-pastel-mint shrink-0" />
+                              <span className="text-xs font-bold uppercase tracking-wider text-pastel-mint">
+                                Recommended Payment Card
+                              </span>
+                            </div>
+                            {offerReport.recommendedCard.matchedOffer ? (
+                              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-pastel-mint/20 text-pastel-mint border border-pastel-mint/30">
+                                🎯 {offerReport.recommendedCard.matchedOffer.confidence === 'VERIFIED' ? 'Verified Offer' : 'Promo'}
+                              </span>
+                            ) : (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-text-muted">
+                                Best Base Rate
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                              <div className="text-base font-bold text-text-primary">
+                                {offerReport.recommendedCard.cardName}
+                              </div>
+                              <p className="text-xs text-text-muted mt-0.5">
+                                {offerReport.recommendedCard.benefit.explanation}
+                              </p>
+                            </div>
+                            <div className="text-right sm:shrink-0">
+                              <div className="text-lg font-display font-bold text-pastel-mint">
+                                ₹{formatINR(offerReport.recommendedCard.benefit.netBenefitINR)}
+                              </div>
+                              <div className="text-[11px] text-text-muted font-medium">
+                                Net Est. Benefit ({offerReport.recommendedCard.benefit.effectiveReturnPct}%)
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Switch suggestion if suboptimal card is currently selected */}
+                          {offerReport.selectedCardEvaluation &&
+                            offerReport.recommendedCard.userCardId !== offerReport.selectedCardEvaluation.userCardId && (
+                              <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                                <div className="text-xs text-pastel-peach font-semibold flex items-center gap-1.5">
+                                  <span>⚠️</span>
+                                  <span>
+                                    Switching saves you <strong className="text-white">₹{formatINR(offerReport.potentialSavingsLost)} more</strong>!
+                                  </span>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => setUserCardId(offerReport.recommendedCard!.userCardId)}
+                                  className="text-xs font-bold text-pastel-mint hover:text-white bg-pastel-mint/20 hover:bg-pastel-mint/30 px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1"
+                                >
+                                  Switch to This Card →
+                                </button>
+                              </div>
+                            )}
+                        </div>
+                      )}
+
+                      {/* 2. Selected Card Benefit Breakdown */}
+                      {offerReport.selectedCardEvaluation && (
+                        <div className="p-4 bg-dark-elevated rounded-2xl border border-white/10 space-y-3">
+                          <div className="flex justify-between items-center text-xs">
+                            <span className="text-text-muted font-bold uppercase tracking-wider">
+                              Selected Card Benefits ({offerReport.selectedCardEvaluation.cardName})
+                            </span>
+                            <span className="font-bold text-pastel-mint text-sm">
+                              ₹{formatINR(offerReport.selectedCardEvaluation.benefit.netBenefitINR)} Total
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-3 gap-2.5 text-center text-xs">
+                            <div className="p-2.5 rounded-xl bg-dark-surface/60 border border-white/5">
+                              <div className="text-[11px] text-text-muted font-medium">Instant Discount</div>
+                              <div className="font-bold text-pastel-mint mt-0.5 text-sm">
+                                {offerReport.selectedCardEvaluation.benefit.instantDiscount > 0
+                                  ? `₹${formatINR(offerReport.selectedCardEvaluation.benefit.instantDiscount)}`
+                                  : '—'}
+                              </div>
+                              {offerReport.selectedCardEvaluation.benefit.isCapped && (
+                                <div className="text-[9px] text-pastel-peach font-medium mt-0.5">Capped</div>
+                              )}
+                            </div>
+
+                            <div className="p-2.5 rounded-xl bg-dark-surface/60 border border-white/5">
+                              <div className="text-[11px] text-text-muted font-medium">Cashback</div>
+                              <div className="font-bold text-pastel-lavender mt-0.5 text-sm">
+                                {offerReport.selectedCardEvaluation.benefit.cashback > 0
+                                  ? `₹${formatINR(offerReport.selectedCardEvaluation.benefit.cashback)}`
+                                  : '—'}
+                              </div>
+                              {offerReport.selectedCardEvaluation.benefit.isCapped && (
+                                <div className="text-[9px] text-pastel-peach font-medium mt-0.5">Capped</div>
+                              )}
+                            </div>
+
+                            <div className="p-2.5 rounded-xl bg-dark-surface/60 border border-white/5">
+                              <div className="text-[11px] text-text-muted font-medium">Reward Points</div>
+                              <div className="font-bold text-pastel-peach mt-0.5 text-sm">
+                                {offerReport.selectedCardEvaluation.benefit.rewardPoints > 0
+                                  ? `+${formatINR(offerReport.selectedCardEvaluation.benefit.rewardPoints)} pts`
+                                  : '—'}
+                              </div>
+                              <div className="text-[9px] text-text-muted mt-0.5">
+                                ~₹{formatINR(offerReport.selectedCardEvaluation.benefit.rewardPointsValueINR)}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* 3. Brand Registration Reminder & Portal Link */}
+                      {offerReport.selectedCardEvaluation?.registrationRequirement && (
+                        <div
+                          className={`p-3.5 rounded-2xl border text-xs flex items-start gap-3 ${
+                            offerReport.selectedCardEvaluation.registrationRequirement.status === 'REGISTERED'
+                              ? 'bg-pastel-mint/10 border-pastel-mint/30 text-pastel-mint'
+                              : 'bg-pastel-peach/10 border-pastel-peach/30 text-pastel-peach'
+                          }`}
+                        >
+                          {offerReport.selectedCardEvaluation.registrationRequirement.status === 'REGISTERED' ? (
+                            <ShieldCheck className="w-5 h-5 text-pastel-mint shrink-0 mt-0.5" />
+                          ) : (
+                            <AlertCircle className="w-5 h-5 text-pastel-peach shrink-0 mt-0.5" />
+                          )}
+                          <div className="flex-1">
+                            <div className="font-bold text-sm text-text-primary flex items-center justify-between">
+                              <span>Brand Registration: {offerReport.selectedCardEvaluation.registrationRequirement.brandName}</span>
+                              <span
+                                className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                  offerReport.selectedCardEvaluation.registrationRequirement.status === 'REGISTERED'
+                                    ? 'bg-pastel-mint/20 text-pastel-mint'
+                                    : 'bg-pastel-peach/20 text-pastel-peach'
+                                }`}
+                              >
+                                {offerReport.selectedCardEvaluation.registrationRequirement.status}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-xs opacity-90 leading-relaxed text-text-muted">
+                              {offerReport.selectedCardEvaluation.registrationRequirement.reminderMessage}
+                            </p>
+                            {offerReport.selectedCardEvaluation.registrationRequirement.portalUrl && (
+                              <a
+                                href={offerReport.selectedCardEvaluation.registrationRequirement.portalUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 mt-2 font-bold text-text-primary hover:text-pastel-lavender transition-colors underline text-xs"
+                              >
+                                Open Official Merchant Portal <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* 4. Comparison View of All Eligible Cards */}
+                      {offerReport.eligibleCards.length > 0 && (
+                        <div className="rounded-2xl border border-white/10 bg-dark-surface/40 overflow-hidden">
+                          <button
+                            type="button"
+                            onClick={() => setShowCardComparison(!showCardComparison)}
+                            className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-text-primary hover:bg-white/5 transition-colors"
+                          >
+                            <span className="flex items-center gap-2">
+                              <span>📊 Compare All Your Cards ({offerReport.eligibleCards.length} evaluated)</span>
+                            </span>
+                            {showCardComparison ? <ChevronUp className="w-4 h-4 text-text-muted" /> : <ChevronDown className="w-4 h-4 text-text-muted" />}
+                          </button>
+
+                          {showCardComparison && (
+                            <div className="p-3 border-t border-white/5 space-y-2">
+                              {offerReport.eligibleCards.map((card, idx) => {
+                                const isSelected = card.userCardId === userCardId;
+                                return (
+                                  <div
+                                    key={card.userCardId}
+                                    className={`p-3 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs ${
+                                      isSelected
+                                        ? 'bg-pastel-lavender/10 border-pastel-lavender/40'
+                                        : 'bg-dark-elevated/60 border-white/5 hover:border-white/20'
+                                    }`}
+                                  >
+                                    <div className="flex items-center gap-2.5">
+                                      <span className="w-5 h-5 rounded-full bg-white/5 text-[10px] font-bold flex items-center justify-center text-text-muted shrink-0">
+                                        #{idx + 1}
+                                      </span>
+                                      <div>
+                                        <div className="font-bold text-text-primary flex items-center gap-2">
+                                          <span>{card.cardName}</span>
+                                          {card.matchedOffer && (
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-pastel-mint/20 text-pastel-mint">
+                                              Promo
+                                            </span>
+                                          )}
+                                        </div>
+                                        <div className="text-[11px] text-text-muted mt-0.5">
+                                          {card.benefit.explanation}
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                                      <div className="text-right">
+                                        <div className="font-bold text-pastel-mint text-sm">
+                                          ₹{formatINR(card.benefit.netBenefitINR)}
+                                        </div>
+                                        <div className="text-[10px] text-text-muted">
+                                          {card.benefit.effectiveReturnPct}% return
+                                        </div>
+                                      </div>
+                                      {!isSelected ? (
+                                        <button
+                                          type="button"
+                                          onClick={() => setUserCardId(card.userCardId)}
+                                          className="px-2.5 py-1 text-xs font-bold rounded-lg bg-white/10 hover:bg-pastel-lavender/20 hover:text-pastel-lavender transition-colors"
+                                        >
+                                          Select
+                                        </button>
+                                      ) : (
+                                        <span className="text-pastel-lavender font-bold text-xs flex items-center gap-1">
+                                          <CheckCircle2 className="w-3.5 h-3.5" /> Selected
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* 5. Ineligible Cards & Disqualification Reasons */}
+                      {offerReport.ineligibleCards.length > 0 && (
+                        <div className="rounded-2xl border border-red-500/20 bg-red-500/5 overflow-hidden">
+                          <button
+                            type="button"
+                            onClick={() => setShowIneligibleCards(!showIneligibleCards)}
+                            className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-pastel-peach hover:bg-red-500/10 transition-colors"
+                          >
+                            <span className="flex items-center gap-2">
+                              <span>⚠️ Ineligible Cards for Current Offers ({offerReport.ineligibleCards.length})</span>
+                            </span>
+                            {showIneligibleCards ? <ChevronUp className="w-4 h-4 text-pastel-peach" /> : <ChevronDown className="w-4 h-4 text-pastel-peach" />}
+                          </button>
+
+                          {showIneligibleCards && (
+                            <div className="p-3 border-t border-red-500/15 space-y-2">
+                              {offerReport.ineligibleCards.map(c => (
+                                <div key={c.userCardId} className="p-2.5 rounded-xl bg-dark-elevated/70 border border-red-500/20 text-xs">
+                                  <div className="font-bold text-text-primary flex items-center justify-between">
+                                    <span>{c.cardName}</span>
+                                    <span className="text-[10px] uppercase font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">
+                                      Disqualified
+                                    </span>
+                                  </div>
+                                  <p className="mt-1 text-[11px] text-pastel-peach leading-relaxed">
+                                    Reason: {c.ineligibilityReason}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* 6. Terms & Conditions Accordion */}
+                      {offerReport.selectedCardEvaluation?.matchedOffer && (
+                        <div className="rounded-2xl border border-white/10 bg-dark-surface/30 overflow-hidden">
+                          <button
+                            type="button"
+                            onClick={() => setShowTerms(!showTerms)}
+                            className="w-full px-4 py-2.5 flex items-center justify-between text-xs font-bold text-text-muted hover:bg-white/5 transition-colors"
+                          >
+                            <span className="flex items-center gap-1.5">
+                              <Info className="w-3.5 h-3.5" />
+                              <span>Offer Terms & Conditions ({offerReport.selectedCardEvaluation.matchedOffer.offer_id})</span>
+                            </span>
+                            {showTerms ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          </button>
+
+                          {showTerms && (
+                            <div className="p-3 border-t border-white/5 text-xs text-text-muted space-y-2 leading-relaxed bg-dark-elevated/40">
+                              <p>{offerReport.selectedCardEvaluation.matchedOffer.terms_and_conditions}</p>
+                              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px] border-t border-white/5">
+                                <span>
+                                  Valid until:{' '}
+                                  <strong className="text-text-primary">
+                                    {offerReport.selectedCardEvaluation.matchedOffer.valid_until || 'Ongoing'}
+                                  </strong>
+                                </span>
+                                {offerReport.selectedCardEvaluation.matchedOffer.source_url && (
+                                  <a
+                                    href={offerReport.selectedCardEvaluation.matchedOffer.source_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-pastel-lavender hover:underline inline-flex items-center gap-1"
+                                  >
+                                    Official Issuer Source <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* 7. Offer Redemption Lifecycle Tracking */}
+                      {offerReport.selectedCardEvaluation?.matchedOffer && (
+                        <div className="p-4 rounded-2xl bg-dark-elevated/90 border border-pastel-lavender/30 space-y-3">
+                          <div className="flex items-center justify-between">
+                            <label className="flex items-center gap-2.5 cursor-pointer text-xs font-bold text-text-primary select-none">
+                              <input
+                                type="checkbox"
+                                checked={recordRedemption}
+                                onChange={e => setRecordRedemption(e.target.checked)}
+                                className="w-4 h-4 rounded text-pastel-lavender bg-dark-surface border-white/20 focus:ring-0 cursor-pointer"
+                              />
+                              <span className="flex items-center gap-1.5">
+                                <BookmarkCheck className="w-4 h-4 text-pastel-lavender" />
+                                <span>Record Offer Redemption Lifecycle</span>
+                              </span>
+                            </label>
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pastel-lavender/15 text-pastel-lavender border border-pastel-lavender/20">
+                              Savings Tracker
+                            </span>
+                          </div>
+
+                          {recordRedemption && (
+                            <div className="pt-2 border-t border-white/5 space-y-3">
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                                <span className="text-text-muted font-semibold">Initial Redemption Status:</span>
+                                <div className="flex gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => setRedemptionStatus('APPLIED')}
+                                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                                      redemptionStatus === 'APPLIED'
+                                        ? 'bg-pastel-lavender text-dark-base shadow-[0_0_12px_rgba(230,230,250,0.3)]'
+                                        : 'bg-dark-surface text-text-muted hover:text-white border border-white/5'
+                                    }`}
+                                  >
+                                    APPLIED (Instant / Points)
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => setRedemptionStatus('PENDING_CASHBACK')}
+                                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                                      redemptionStatus === 'PENDING_CASHBACK'
+                                        ? 'bg-pastel-peach text-dark-base shadow-[0_0_12px_rgba(255,218,185,0.3)]'
+                                        : 'bg-dark-surface text-text-muted hover:text-white border border-white/5'
+                                    }`}
+                                  >
+                                    PENDING CASHBACK
+                                  </button>
+                                </div>
+                              </div>
+
+                              <div>
+                                <label className="block text-[11px] font-semibold text-text-muted mb-1">
+                                  Redemption Note (Optional)
+                                </label>
+                                <input
+                                  type="text"
+                                  value={redemptionNotes}
+                                  onChange={e => setRedemptionNotes(e.target.value)}
+                                  placeholder="e.g. Applied coupon code at checkout"
+                                  className="glass-input text-xs py-2"
+                                />
+                              </div>
+
+                              <p className="text-[11px] text-text-muted leading-relaxed">
+                                💡 Records this offer under your Rewards Hub Savings Tracker. Confirmed benefits can be verified once posted.
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || (cards.length === 0 && !editTxn)}
+                      className="pastel-button w-full py-4 text-base font-bold disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Saving Transaction...' : editTxn ? 'Save Changes' : 'Confirm & Save Transaction'}
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
           </div>
         )}
       </AnimatePresence>

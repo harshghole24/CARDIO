@@ -12,6 +12,7 @@ import {
   RewardCurrencyRowSchema, type RewardCurrencyRow,
   TransferRouteCurrencyRowSchema, type TransferRouteCurrencyRow,
   MovieDiningBenefitRowSchema, type MovieDiningBenefitRow,
+  OfferRowSchema, type OfferRow,
 } from './schemas';
 
 export interface DataStore {
@@ -24,6 +25,7 @@ export interface DataStore {
   currencies: RewardCurrencyRow[];
   transferRoutes: TransferRouteCurrencyRow[];
   movieDining: MovieDiningBenefitRow[];
+  offers: OfferRow[];
 
   // Indexed lookups
   cardById: Map<string, CreditCardRow>;
@@ -36,6 +38,9 @@ export interface DataStore {
   programById: Map<string, LoyaltyProgramRow>;
   currencyById: Map<string, RewardCurrencyRow>;
   movieDiningByCard: Map<string, MovieDiningBenefitRow[]>;
+  offerById: Map<string, OfferRow>;
+  offersByMerchant: Map<string, OfferRow[]>;
+  offersByBank: Map<string, OfferRow[]>;
 
   // Metadata
   dataAsOf: string;
@@ -77,7 +82,8 @@ export async function loadDataStore(): Promise<DataStore> {
   _loading = (async () => {
     const [
       rawCards, rawRatios, rawAwards, rawAirports,
-      rawPrograms, rawCurrencies, rawRoutes, rawMovieDining
+      rawPrograms, rawCurrencies, rawRoutes, rawMovieDining,
+      rawOffers
     ] = await Promise.all([
       fetchCSV('credit_cards.csv'),
       fetchCSV('card_program_ratios.csv'),
@@ -87,6 +93,7 @@ export async function loadDataStore(): Promise<DataStore> {
       fetchCSV('reward_currencies.csv'),
       fetchCSV('transfer_routes_currency_level.csv'),
       fetchCSV('movies_dining_benefits.csv'),
+      fetchCSV('offers.csv'),
     ]);
 
     const cards = parseAndValidate<CreditCardRow>(rawCards, CreditCardRowSchema, 'credit_cards.csv');
@@ -97,9 +104,10 @@ export async function loadDataStore(): Promise<DataStore> {
     const currencies = parseAndValidate<RewardCurrencyRow>(rawCurrencies, RewardCurrencyRowSchema, 'reward_currencies.csv');
     const transferRoutes = parseAndValidate<TransferRouteCurrencyRow>(rawRoutes, TransferRouteCurrencyRowSchema, 'transfer_routes_currency_level.csv');
     const movieDining = parseAndValidate<MovieDiningBenefitRow>(rawMovieDining, MovieDiningBenefitRowSchema, 'movies_dining_benefits.csv');
+    const offers = parseAndValidate<OfferRow>(rawOffers, OfferRowSchema, 'offers.csv');
 
     if (import.meta.env.DEV) {
-      console.log(`[DataStore] Loaded: ${cards.length} cards, ${ratios.length} ratios, ${awards.length} awards, ${airports.length} airports, ${programs.length} programs, ${currencies.length} currencies, ${transferRoutes.length} transfer routes, ${movieDining.length} movie/dining benefits`);
+      console.log(`[DataStore] Loaded: ${cards.length} cards, ${ratios.length} ratios, ${awards.length} awards, ${airports.length} airports, ${programs.length} programs, ${currencies.length} currencies, ${transferRoutes.length} transfer routes, ${movieDining.length} movie/dining benefits, ${offers.length} card offers`);
     }
 
     // Build indexes
@@ -149,12 +157,28 @@ export async function loadDataStore(): Promise<DataStore> {
       movieDiningByCard.get(m.card_id)!.push(m);
     });
 
+    const offerById = new Map<string, OfferRow>();
+    const offersByMerchant = new Map<string, OfferRow[]>();
+    const offersByBank = new Map<string, OfferRow[]>();
+    offers.forEach(o => {
+      offerById.set(o.offer_id, o);
+
+      const mKey = o.merchant_name.toLowerCase().trim();
+      if (!offersByMerchant.has(mKey)) offersByMerchant.set(mKey, []);
+      offersByMerchant.get(mKey)!.push(o);
+
+      const bKey = o.bank_name.toLowerCase().trim();
+      if (!offersByBank.has(bKey)) offersByBank.set(bKey, []);
+      offersByBank.get(bKey)!.push(o);
+    });
+
     _store = {
-      cards, ratios, awards, airports, programs, currencies, transferRoutes, movieDining,
+      cards, ratios, awards, airports, programs, currencies, transferRoutes, movieDining, offers,
       cardById, ratiosByCard, ratiosByProgram, ratioByCardAndProgram,
       awardsByRoute, awardByRouteProgramCabin,
       airportByIata, programById, currencyById, movieDiningByCard,
-      dataAsOf: '7 Oct 2026',
+      offerById, offersByMerchant, offersByBank,
+      dataAsOf: '31 Oct 2026',
     };
 
     return _store;

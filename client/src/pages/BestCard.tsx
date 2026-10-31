@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, CreditCard, ArrowRight, Sparkles, ShoppingBag, Utensils, Plane, Fuel, ShoppingCart, Wifi, Film, Lightbulb, Plus } from 'lucide-react';
 import { useDataStore } from '../lib/data/DataContext';
@@ -30,7 +30,7 @@ interface UserCard {
   custom_bank?: string;
 }
 
-const BestCard = ({ session }: { session: any }) => {
+const BestCard = ({ session: _session }: { session?: any }) => {
   const { store, loading: dataLoading } = useDataStore();
   const navigate = useNavigate();
 
@@ -38,25 +38,23 @@ const BestCard = ({ session }: { session: any }) => {
   const [category, setCategory] = useState('travel');
   const [userCards, setUserCards] = useState<UserCard[]>([]);
   const [cardsLoaded, setCardsLoaded] = useState(false);
-  const [loadingCards, setLoadingCards] = useState(false);
   const [result, setResult] = useState<null | 'calculated'>(null);
 
   // Lazily load user's cards on first render
   const loadCards = async () => {
     if (cardsLoaded) return;
-    setLoadingCards(true);
     try {
       const cards = await api.getCards();
       setUserCards(cards || []);
       setCardsLoaded(true);
     } catch (err) {
       console.error(err);
-    } finally {
-      setLoadingCards(false);
     }
   };
 
-  useMemo(() => { loadCards(); }, []);
+  useEffect(() => {
+    loadCards();
+  }, []);
 
   // The core calculation — pure, derived from CSV data
   const recommendation = useMemo(() => {

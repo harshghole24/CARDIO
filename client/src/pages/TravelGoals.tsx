@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Plane, ArrowRight, MapPin, Calculator, Sparkles, Navigation, X,
   ShieldAlert, ShieldCheck, CreditCard, Clock, TrendingUp, Zap
@@ -8,7 +8,7 @@ import { requiredSpendForAward, monthsToGoal } from '../lib/calculators/travelPl
 import { api } from '../lib/api';
 import { useDataStore } from '../lib/data/DataContext';
 import { findAwards, searchAirports, getDistanceKm } from '../lib/data/dataStore';
-import type { AirportRow, LoyaltyProgramRow, AwardChartRow } from '../lib/data/schemas';
+import type { AirportRow } from '../lib/data/schemas';
 import { useNavigate } from 'react-router-dom';
 
 function formatINR(n: number) {
@@ -45,13 +45,52 @@ const TravelGoals = () => {
   const [monthlySpend, setMonthlySpend] = useState(50000);
 
   const [selectedProgramId, setSelectedProgramId] = useState<string | null>(null);
+  const [savedGoals, setSavedGoals] = useState<any[]>([]);
+  const [savingGoal, setSavingGoal] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   useEffect(() => {
-    api.getCards()
-      .then(cards => setUserCards(cards || []))
+    Promise.all([api.getCards(), api.getTravelGoals()])
+      .then(([cards, goals]) => {
+        setUserCards(cards || []);
+        setSavedGoals(goals || []);
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  const handleSaveGoal = async () => {
+    if (!origin || !destination || !boardingPassData) return;
+    setSavingGoal(true);
+    try {
+      const saved = await api.saveTravelGoal({
+        departure: origin.iata,
+        destination: destination.iata,
+        cabin,
+        trip_type: tripType,
+        program_id: boardingPassData.program.program_id,
+        target_points: boardingPassData.pointsRequired,
+        departure_date: new Date(Date.now() + 90 * 86400000).toISOString().split('T')[0],
+      });
+      setSavedGoals(prev => [saved, ...prev]);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch (err: any) {
+      alert("Failed to save goal: " + err.message);
+    } finally {
+      setSavingGoal(false);
+    }
+  };
+
+  const handleDeleteGoal = async (id: string) => {
+    if (!window.confirm("Remove this saved travel goal?")) return;
+    setSavedGoals(prev => prev.filter(g => g.id !== id));
+    try {
+      await api.deleteTravelGoal(id);
+    } catch (err: any) {
+      alert("Failed to delete goal: " + err.message);
+    }
+  };
 
   const originResults = useMemo(() => store ? searchAirports(store, originQuery) : [], [store, originQuery]);
   const destResults = useMemo(() => store ? searchAirports(store, destQuery) : [], [store, destQuery]);
@@ -189,6 +228,39 @@ const TravelGoals = () => {
         </h1>
         <p className="text-text-muted font-medium">Live exact calculations — from credit card to award flight.</p>
       </header>
+
+      {/* Saved Goals Portfolio */}
+      {savedGoals.length > 0 && (
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8 glass-card p-5 border border-pastel-lavender/20 rounded-2xl">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-sm text-pastel-lavender flex items-center gap-2">
+              <Sparkles className="w-4 h-4" /> Active Saved Goals ({savedGoals.length})
+            </h3>
+            <span className="text-xs text-text-muted">Synced with Dashboard</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {savedGoals.map(g => (
+              <div key={g.id} className="bg-dark-base/60 p-3.5 rounded-xl border border-white/5 flex items-center justify-between group">
+                <div>
+                  <p className="font-display font-bold text-text-primary text-base">
+                    {g.departure} → {g.destination}
+                  </p>
+                  <p className="text-xs text-text-muted mt-0.5">
+                    {Number(g.target_points).toLocaleString()} pts • {store?.programById.get(g.program_id)?.name || g.program_id}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleDeleteGoal(g.id)}
+                  className="p-1.5 hover:bg-red-500/10 text-text-muted hover:text-red-400 rounded-lg transition-colors"
+                  title="Remove Goal"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
@@ -374,6 +446,14 @@ const TravelGoals = () => {
                     {boardingPassData.multiplier > 1 && (
                       <p className="text-xs text-pastel-peach mt-1">×{boardingPassData.multiplier} (return)</p>
                     )}
+                    <button
+                      onClick={handleSaveGoal}
+                      disabled={savingGoal}
+                      className="mt-4 px-4 py-2.5 rounded-xl text-xs font-bold pastel-button flex items-center gap-1.5 shadow-md w-full justify-center disabled:opacity-50"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      {savingGoal ? 'Saving...' : saveSuccess ? '✓ Saved!' : 'Save as Active Goal'}
+                    </button>
                   </>
                 ) : (
                   <>
@@ -565,7 +645,7 @@ const TravelGoals = () => {
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-pastel-peach mb-2 flex items-center gap-1"><Zap className="w-3 h-3" /> Optional upgrade (≥25% faster)</p>
                       <div className="space-y-2">
-                        {cardRecommendation.alternatives.map((alt: any, idx: number) => (
+                        {cardRecommendation.alternatives.map((alt: any) => (
                           <div key={alt.dbCard.card_id} className="p-4 bg-pastel-peach/5 border border-pastel-peach/20 rounded-2xl flex items-center justify-between gap-4">
                             <div>
                               <p className="font-bold text-text-primary">{alt.dbCard.name}</p>

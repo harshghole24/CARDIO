@@ -115,3 +115,101 @@ export const MovieDiningBenefitRowSchema = z.object({
   confidence: z.string().default('MEDIUM'),
 });
 export type MovieDiningBenefitRow = z.infer<typeof MovieDiningBenefitRowSchema>;
+
+export const OfferRowSchema = z.object({
+  offer_id: z.string().min(1),
+  merchant_name: z.string().min(1),
+  bank_name: z.string().min(1),
+  eligible_card_variants: z.string().default('all'),
+  eligible_networks: z.string().default('ALL'),
+  offer_category: z.string().default('Shopping'),
+  benefit_type: z.enum([
+    'PERCENTAGE_CASHBACK',
+    'INSTANT_DISCOUNT',
+    'REWARD_POINTS_MULTIPLIER',
+    'FIXED_DISCOUNT'
+  ]).or(z.string()),
+  discount_percentage: z.coerce.number().default(0),
+  cashback_percentage: z.coerce.number().default(0),
+  reward_points_multiplier: z.coerce.number().default(1),
+  fixed_discount_amount: z.coerce.number().default(0),
+  minimum_transaction_amount: z.coerce.number().default(0),
+  maximum_benefit: z.coerce.number().default(0),
+  valid_from: z.string().optional(),
+  valid_until: z.string().optional(),
+  registration_required: z.preprocess(
+    (val) => val === true || val === 'true' || val === 'TRUE' || val === '1',
+    z.boolean().default(false)
+  ),
+  required_brand_name: z.string().optional(),
+  portal_url: z.string().optional(),
+  terms_and_conditions: z.string().optional(),
+  source_url: z.string().optional(),
+  last_verified_date: z.string().optional(),
+  offer_status: z.enum(['ACTIVE', 'EXPIRED', 'UPCOMING']).or(z.string()).default('ACTIVE'),
+  confidence: z.enum(['VERIFIED', 'SAMPLE', 'COMMUNITY']).or(z.string()).default('VERIFIED'),
+});
+export type OfferRow = z.infer<typeof OfferRowSchema>;
+
+export const BrandRegistrationSchema = z.object({
+  id: z.string().optional(),
+  user_id: z.string().optional(),
+  user_card_id: z.string().nullable().optional(),
+  brand_name: z.string().min(1, 'Brand name is required'),
+  campaign_name: z.string().optional().nullable(),
+  identifier_type: z.enum(['EMAIL', 'PHONE', 'OTHER']).default('EMAIL'),
+  masked_identifier: z.string().optional().nullable(),
+  status: z.enum(['REGISTERED', 'PENDING', 'NOT_REGISTERED', 'EXPIRED']).default('PENDING'),
+  registration_date: z.string().optional().nullable(),
+  portal_url: z.string().optional().nullable(),
+  multiplier_benefit: z.string().optional().nullable(),
+  valid_until: z.string().optional().nullable(),
+  notes: z.string().optional().nullable(),
+  created_at: z.string().optional(),
+  updated_at: z.string().optional(),
+});
+export type BrandRegistrationRow = z.infer<typeof BrandRegistrationSchema>;
+
+export const OfferLifecycleStatus = z.enum([
+  'AVAILABLE',
+  'SAVED',
+  'APPLIED',
+  'REDEEMED',
+  'PENDING_CASHBACK',
+  'EXPIRED',
+  'NOT_REDEEMED',
+]);
+export type OfferLifecycleStatus = z.infer<typeof OfferLifecycleStatus>;
+
+export const CashbackStatus = z.enum([
+  'NOT_APPLICABLE',
+  'PENDING',
+  'RECEIVED',
+  'FAILED',
+]);
+export type CashbackStatus = z.infer<typeof CashbackStatus>;
+
+export const OfferRedemptionSchema = z.object({
+  id: z.string().optional(),
+  user_id: z.string().optional(),
+  offer_id: z.string().min(1),
+  transaction_id: z.string().nullable().optional(),
+  user_card_id: z.string().nullable().optional(),
+  card_id: z.string().nullable().optional(),
+  merchant_name: z.string().min(1),
+  transaction_amount: z.coerce.number().default(0),
+  status: OfferLifecycleStatus.default('SAVED'),
+  estimated_discount: z.coerce.number().default(0),
+  confirmed_discount: z.coerce.number().default(0),
+  estimated_cashback: z.coerce.number().default(0),
+  confirmed_cashback: z.coerce.number().default(0),
+  estimated_reward_points: z.coerce.number().default(0),
+  confirmed_reward_points: z.coerce.number().default(0),
+  cashback_status: CashbackStatus.default('NOT_APPLICABLE'),
+  redemption_date: z.string().optional().nullable(),
+  confirmation_date: z.string().optional().nullable(),
+  notes: z.string().optional().nullable(),
+  created_at: z.string().optional(),
+  updated_at: z.string().optional(),
+});
+export type OfferRedemptionRow = z.infer<typeof OfferRedemptionSchema>;
