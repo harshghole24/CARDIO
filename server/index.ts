@@ -1,7 +1,7 @@
 import 'dotenv/config'; // MUST be first to load env before anything else
 import express from 'express';
 import cors from 'cors';
-import { createClient } from '@supabase/supabase-js';
+import { localDb } from './db';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,20 +26,14 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '1mb' }));
 
-// Initialize Supabase Client
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
-const anonKey = process.env.SUPABASE_ANON_KEY || '';
-const supabaseKey = serviceRoleKey || anonKey;
-
-const supabaseAdmin = createClient(supabaseUrl, supabaseKey, {
-  auth: { autoRefreshToken: false, persistSession: false }
-});
+// Local SQLite Database and Admin references
+const supabaseAdmin = localDb;
+const supabase = localDb;
 
 // Resource ownership verification helpers (defense against IDOR & Parameter Tampering)
-async function verifyUserCardOwnership(supabase: any, userId: string, userCardId: string | null | undefined): Promise<boolean> {
+async function verifyUserCardOwnership(dbClient: any, userId: string, userCardId: string | null | undefined): Promise<boolean> {
   if (!userCardId) return true;
-  const { data } = await supabase
+  const { data } = await dbClient
     .from('user_cards')
     .select('id')
     .eq('id', userCardId)
@@ -48,9 +42,9 @@ async function verifyUserCardOwnership(supabase: any, userId: string, userCardId
   return !!data;
 }
 
-async function verifyTransactionOwnership(supabase: any, userId: string, transactionId: string | null | undefined): Promise<boolean> {
+async function verifyTransactionOwnership(dbClient: any, userId: string, transactionId: string | null | undefined): Promise<boolean> {
   if (!transactionId) return true;
-  const { data } = await supabase
+  const { data } = await dbClient
     .from('transactions')
     .select('id')
     .eq('id', transactionId)
@@ -59,6 +53,7 @@ async function verifyTransactionOwnership(supabase: any, userId: string, transac
   return !!data;
 }
 
+// Local Session Authentication Middleware
 const authMiddleware = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'No authorization header' });
@@ -66,36 +61,114 @@ const authMiddleware = async (req: express.Request, res: express.Response, next:
   const token = authHeader.replace(/^Bearer\s+/i, '');
   if (!token) return res.status(401).json({ error: 'Missing bearer token' });
 
-  const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
-  
-  if (error || !user) {
-    return res.status(401).json({ error: 'Unauthorized — invalid or expired session token' });
+  let userPayload: any = null;
+  try {
+    userPayload = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
+  } catch {
+    return res.status(401).json({ error: 'Invalid authentication token' });
   }
-  
-  // Attach user and authenticated supabase client to request
-  (req as any).user = user;
-  const userClient = createClient(supabaseUrl, supabaseKey, {
-    global: { headers: { Authorization: `Bearer ${token}` } },
-    auth: { autoRefreshToken: false, persistSession: false }
-  });
-  (req as any).supabase = userClient;
 
-  // Auto-insert profile just in case the trigger didn't fire for older users
-  const { error: profileError } = await userClient.from('profiles').insert({
-    id: user.id,
-    full_name: user.user_metadata?.full_name || 'CardIO User',
-    updated_at: new Date().toISOString()
-  });
-  
-  if (profileError && profileError.code !== '23505') { // Ignore unique constraint violation
-    console.error('PROFILE INSERT ERROR:', profileError.message);
+  if (!userPayload || !userPayload.id) {
+    return res.status(401).json({ error: 'Unauthorized — invalid session token' });
   }
+
+  const user = localDb.getUserById(userPayload.id);
+  if (!user) {
+    return res.status(401).json({ error: 'User does not exist or was deleted' });
+  }
+
+  (req as any).user = {
+    ...user,
+    user_metadata: { full_name: user.full_name }
+  };
+  (req as any).supabase = localDb;
 
   next();
 };
 
+// Health Endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'CardIO API is running' });
+  res.json({ status: 'ok', message: 'CardIO API is running with local SQLite storage' });
+});
+
+// Authentication Endpoints (Local Username + Password)
+app.post('/api/auth/login', (req, res) => {
+  const { username, email, password } = req.body;
+  const identifier = String(username || email || '').trim();
+  const pwd = String(password || '').trim();
+
+  if (!identifier || !pwd) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const user = localDb.getUserByUsernameOrEmail(identifier);
+  if (!user || user.password !== pwd) {
+    return res.status(401).json({ error: 'Invalid username or password' });
+  }
+
+  const tokenPayload = {
+    id: user.id,
+    username: user.username,
+    full_name: user.full_name,
+    email: user.email,
+    created: Date.now()
+  };
+  const token = Buffer.from(JSON.stringify(tokenPayload)).toString('base64');
+
+  res.json({
+    token,
+    user: {
+      id: user.id,
+      username: user.username,
+      full_name: user.full_name,
+      email: user.email,
+      user_metadata: { full_name: user.full_name }
+    }
+  });
+});
+
+app.post('/api/auth/register', (req, res) => {
+  const { username, password, full_name, email } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  const cleanUser = String(username).trim().toLowerCase();
+  const existing = localDb.getUserByUsernameOrEmail(cleanUser);
+  if (existing) {
+    return res.status(409).json({ error: 'Username already registered. Please sign in.' });
+  }
+
+  const newUser = localDb.registerUser(
+    cleanUser,
+    String(password).trim(),
+    String(full_name || username).trim(),
+    email ? String(email).trim() : undefined
+  );
+
+  const tokenPayload = {
+    id: newUser.id,
+    username: newUser.username,
+    full_name: newUser.full_name,
+    email: newUser.email,
+    created: Date.now()
+  };
+  const token = Buffer.from(JSON.stringify(tokenPayload)).toString('base64');
+
+  res.status(201).json({
+    token,
+    user: {
+      id: newUser.id,
+      username: newUser.username,
+      full_name: newUser.full_name,
+      email: newUser.email,
+      user_metadata: { full_name: newUser.full_name }
+    }
+  });
+});
+
+app.get('/api/auth/me', authMiddleware, (req, res) => {
+  res.json({ user: (req as any).user });
 });
 
 // --- DASHBOARD ANALYTICS ---

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, CreditCard, Wallet, Plane, TrendingUp, LogOut, Sparkles, Zap } from 'lucide-react';
+import { LayoutDashboard, CreditCard, Wallet, Plane, TrendingUp, LogOut, Sparkles, Zap, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { motion } from 'framer-motion';
 
@@ -16,9 +16,15 @@ const QUOTES = [
 // Rotate quote daily based on day-of-year
 const todayQuote = QUOTES[new Date().getDay() % QUOTES.length];
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    onClose?.();
   };
 
   const navItems = [
@@ -31,14 +37,14 @@ const Sidebar = () => {
     { name: 'Analytics', icon: TrendingUp, path: '/analytics' },
   ];
 
-  return (
-    <div className="w-72 bg-dark-surface text-text-primary h-full flex flex-col border-r border-white/5 relative overflow-hidden">
+  const sidebarContent = (
+    <>
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-pastel-lavender/10 to-transparent pointer-events-none"></div>
       
-      <div className="p-8 relative z-10">
+      <div className="p-6 xl:p-8 relative z-10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pastel-lavender to-pastel-pink flex items-center justify-center shadow-lg shadow-pastel-lavender/20">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pastel-lavender to-pastel-pink flex items-center justify-center shadow-lg shadow-pastel-lavender/20 shrink-0">
             <Sparkles className="w-6 h-6 text-dark-base" />
           </div>
           <div>
@@ -54,6 +60,7 @@ const Sidebar = () => {
             key={item.name}
             to={item.path}
             end={item.path === '/'}
+            onClick={() => onClose?.()}
             className={({ isActive }) =>
               `flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 font-medium relative ${
                 isActive 
@@ -82,36 +89,28 @@ const Sidebar = () => {
       </nav>
 
       <div className="p-6 relative z-10 mt-auto border-t border-white/5">
-        {/* Airplane illustration + rotating quote — replaces fake "Pro Plan Active" */}
+        {/* Airplane illustration + rotating quote */}
         <div className="bg-dark-base/60 p-4 rounded-2xl border border-white/5 mb-5 overflow-hidden relative">
-          {/* SVG plane illustration */}
           <div className="flex justify-center mb-3">
             <motion.svg
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg" className="w-20 h-12 opacity-80"
             >
-              {/* Sky gradient */}
               <defs>
                 <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#C3B1E1" stopOpacity="0.3" />
                   <stop offset="100%" stopColor="#F4C2D7" stopOpacity="0.1" />
                 </linearGradient>
               </defs>
-              {/* Clouds */}
               <ellipse cx="15" cy="35" rx="10" ry="5" fill="white" fillOpacity="0.06"/>
               <ellipse cx="65" cy="42" rx="12" ry="5" fill="white" fillOpacity="0.06"/>
-              {/* Plane body */}
               <path d="M10 25 Q40 10 70 22 L68 28 Q40 18 12 31 Z" fill="#C3B1E1" fillOpacity="0.9"/>
-              {/* Wing */}
               <path d="M30 25 L45 10 L50 22 Z" fill="#F4C2D7" fillOpacity="0.9"/>
-              {/* Tail */}
               <path d="M12 27 L8 18 L15 24 Z" fill="#B8E6D3" fillOpacity="0.9"/>
-              {/* Windows */}
               <circle cx="45" cy="23" r="2" fill="#0F0F1A" fillOpacity="0.7"/>
               <circle cx="52" cy="25" r="2" fill="#0F0F1A" fillOpacity="0.7"/>
               <circle cx="59" cy="26" r="2" fill="#0F0F1A" fillOpacity="0.7"/>
-              {/* Exhaust trail */}
               <path d="M10 26 Q5 26 0 24" stroke="#C3B1E1" strokeWidth="1" strokeOpacity="0.4" fill="none" strokeDasharray="2 2"/>
             </motion.svg>
           </div>
@@ -122,7 +121,7 @@ const Sidebar = () => {
 
         <button 
           onClick={handleLogout}
-          className="flex items-center justify-center gap-3 px-4 py-3.5 w-full rounded-2xl text-text-muted font-medium hover:bg-red-500/10 hover:text-red-400 transition-colors border border-transparent hover:border-red-500/20 mb-4"
+          className="flex items-center justify-center gap-3 px-4 py-3.5 w-full rounded-2xl text-text-muted font-medium hover:bg-red-500/10 hover:text-red-400 transition-colors border border-transparent hover:border-red-500/20 mb-4 cursor-pointer"
         >
           <LogOut className="w-5 h-5" />
           <span>Logout</span>
@@ -134,7 +133,36 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar (hidden on < lg) */}
+      <aside className="hidden lg:flex w-64 xl:w-72 bg-dark-surface text-text-primary h-full flex-col border-r border-white/5 relative overflow-hidden shrink-0">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile Drawer (visible on < lg when isOpen is true) */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
+            onClick={onClose}
+          />
+          <div className="relative w-72 max-w-[85vw] bg-dark-surface text-text-primary h-full flex flex-col border-r border-white/10 z-10 shadow-2xl overflow-hidden">
+            <button
+              onClick={onClose}
+              className="absolute top-6 right-5 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-text-muted hover:text-white transition-colors cursor-pointer z-20"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            {sidebarContent}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

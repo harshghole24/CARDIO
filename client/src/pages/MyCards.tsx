@@ -405,8 +405,8 @@ const MyCards = ({ session }: { session: any }) => {
       ) : (
         <motion.div 
           initial="hidden" animate="visible" 
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }} 
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+          variants={{ visible: { transition: { staggerChildren: 0.08 } } }} 
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 items-stretch"
         >
           {cards.map((userCard) => {
             const isCustom = !userCard.credit_cards;
@@ -416,26 +416,39 @@ const MyCards = ({ session }: { session: any }) => {
             const lastFour = userCard.last_four_digits || '••••';
 
             return (
-              <motion.div key={userCard.id} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}} className="flex flex-col items-center group">
-                <AnimatedCard 
-                  bank={bank} cardName={cardName} network={network || 'VISA'} lastFour={lastFour}
-                  cardholderName={session?.user?.user_metadata?.full_name || 'CARDHOLDER'}
-                  expiry="12/28" theme={getThemeForBank(bank)}
-                />
+              <motion.div 
+                key={userCard.id} 
+                variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }} 
+                className="glass-card p-5 rounded-3xl flex flex-col justify-between items-center border border-white/10 hover:border-pastel-lavender/30 transition-all duration-300 shadow-lg relative group"
+              >
+                <div className="w-full flex justify-center">
+                  <AnimatedCard 
+                    bank={bank} cardName={cardName} network={network || 'VISA'} lastFour={lastFour}
+                    cardholderName={session?.user?.user_metadata?.full_name || 'CARDHOLDER'}
+                    expiry="12/28" theme={getThemeForBank(bank)}
+                  />
+                </div>
                 
                 {/* Card Quick Actions */}
-                <div className="mt-8 w-96 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-5 w-full flex items-center gap-2 pt-2 border-t border-white/5">
                   <button 
                     onClick={() => setSelectedCardForBenefits(userCard)}
-                    className="flex-1 bg-dark-elevated border border-white/10 text-text-primary py-3 rounded-xl font-bold hover:bg-dark-surface hover:border-pastel-lavender transition-all shadow-sm"
+                    className="flex-1 bg-white/5 border border-white/10 text-text-primary py-2.5 px-3 rounded-xl text-xs font-semibold hover:bg-white/10 hover:border-pastel-lavender/50 transition-all text-center truncate"
                   >
                     View Benefits
                   </button>
                   <button 
                     onClick={() => navigate('/transactions')}
-                    className="flex-1 bg-dark-elevated border border-white/10 text-text-primary py-3 rounded-xl font-bold hover:bg-dark-surface hover:border-pastel-lavender transition-all shadow-sm"
+                    className="flex-1 bg-white/5 border border-white/10 text-text-primary py-2.5 px-3 rounded-xl text-xs font-semibold hover:bg-white/10 hover:border-pastel-lavender/50 transition-all text-center truncate"
                   >
                     Transactions
+                  </button>
+                  <button 
+                    onClick={() => handleRemoveCard(userCard.id)}
+                    title="Remove Card"
+                    className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all shrink-0"
+                  >
+                    <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
               </motion.div>
