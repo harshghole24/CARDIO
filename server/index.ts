@@ -1515,7 +1515,7 @@ const possibleDistPaths = [
 const clientDistPath = possibleDistPaths.find(p => fs.existsSync(p));
 if (clientDistPath) {
   app.use(express.static(clientDistPath));
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API endpoint not found' });
     }
