@@ -4,7 +4,7 @@
  */
 
 const SESSION_KEY = 'cardio_local_session';
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 type AuthListener = (event: string, session: any) => void;
 const listeners = new Set<AuthListener>();

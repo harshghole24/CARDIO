@@ -282,11 +282,11 @@ class QueryBuilder {
           const values = Object.values(rowData);
 
           const stmt = db.prepare(`INSERT INTO "${this.tableName}" (${cols}) VALUES (${placeholders})`);
-          stmt.run(...values);
+          stmt.run(...(values as any[]));
 
           // Retrieve inserted row
           const getStmt = db.prepare(`SELECT * FROM "${this.tableName}" WHERE id = ?`);
-          const inserted = getStmt.get(rowData.id);
+          const inserted = getStmt.get(rowData.id as any);
           insertedResults.push(inserted);
         }
         return { data: rows.length === 1 ? insertedResults[0] : insertedResults, error: null };
@@ -364,7 +364,11 @@ class QueryBuilder {
         countResult = c.count;
       }
 
-      return { data: rows, error: null, count: countResult };
+      const result: { data: any; error: any; count?: number } = { data: rows, error: null };
+      if (countResult !== undefined) {
+        result.count = countResult;
+      }
+      return result;
     } catch (err: any) {
       console.error(`[LocalDB Error on ${this.tableName}]:`, err.message);
       return { data: null, error: { message: err.message, code: err.code } };

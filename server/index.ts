@@ -1,6 +1,8 @@
 import 'dotenv/config'; // MUST be first to load env before anything else
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 import { localDb } from './db';
 
 const app = express();
@@ -17,9 +19,7 @@ app.use((_req, res, next) => {
 });
 
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN 
-    ? [process.env.CLIENT_ORIGIN, 'http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000']
-    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+  origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -1504,6 +1504,24 @@ app.post('/api/analytics/summary', authMiddleware, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// Serve static client assets if client/dist exists (for all-in-one fullstack deployment like Render/Railway/VPS)
+const possibleDistPaths = [
+  path.resolve(__dirname, '../client/dist'),
+  path.resolve(__dirname, '../../client/dist'),
+  path.resolve(process.cwd(), 'client/dist'),
+  path.resolve(process.cwd(), 'dist')
+];
+const clientDistPath = possibleDistPaths.find(p => fs.existsSync(p));
+if (clientDistPath) {
+  app.use(express.static(clientDistPath));
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ error: 'API endpoint not found' });
+    }
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
 
 // Centralized Unhandled Error & Payload Limit Handler
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
